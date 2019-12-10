@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://flawed.blog/welcome/</loc>
+<lastmod>2019-12-01T15:44:12+04:00</lastmod>
+</url>
+<url>
+<loc>https://flawed.blog/test/</loc>
+<lastmod>2019-12-01T15:48:12+04:00</lastmod>
+</url>
+<url>
+<loc>https://flawed.blog/categories/</loc>
+</url>
+<url>
+<loc>https://flawed.blog/</loc>
+</url>
+<url>
+<loc>https://flawed.blog/portfolio/</loc>
+</url>
+<url>
+<loc>https://flawed.blog/year-archive/</loc>
+</url>
+</urlset>
