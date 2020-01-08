@@ -1,0 +1,1156 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Making Pong for NES (Week 1) - flawed</title>
+<meta name="description" content="Making Pong for Nintendo Entertainment System (NES). Week 1. Drawing some sprites">
+
+
+  <meta name="author" content="Yury Sinev">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="flawed">
+<meta property="og:title" content="Making Pong for NES (Week 1)">
+<meta property="og:url" content="https://flawed.blog/gamedev/homebrew-pong-for-nes-week-1">
+
+
+  <meta property="og:description" content="Making Pong for Nintendo Entertainment System (NES). Week 1. Drawing some sprites">
+
+
+
+  <meta property="og:image" content="https://flawed.blog/assets/images/pong_for_nes_teaser.png">
+
+
+
+  <meta name="twitter:site" content="@ShySinev">
+  <meta name="twitter:title" content="Making Pong for NES (Week 1)">
+  <meta name="twitter:description" content="Making Pong for Nintendo Entertainment System (NES). Week 1. Drawing some sprites">
+  <meta name="twitter:url" content="https://flawed.blog/gamedev/homebrew-pong-for-nes-week-1">
+
+  
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://flawed.blog/assets/images/pong_for_nes_teaser.png">
+  
+
+  
+
+
+
+  <meta property="article:published_time" content="2020-01-08T23:45:00+04:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://flawed.blog/gamedev/homebrew-pong-for-nes-week-1">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Yury Sinev",
+      "url": "https://flawed.blog/",
+      "sameAs": ["https://twitter.com/ShySinev","https://github.com/ShyDev"]
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="flawed Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2a3e67">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+          <a class="site-logo" href="/"><img src="/assets/images/logo.svg" alt=""></a>
+        
+        <a class="site-title" href="/">
+          flawed
+          <span class="site-subtitle">Nothing is perfect. Take my english as an example</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/year-archive/" >posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/portfolio/" >portfolio</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/logo.svg" alt="Yury Sinev" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Yury Sinev</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>From 6502 assembler to C#. From naked OpenGL to Unity. Not an expert in shit, but I hope you’ll find something usefull here</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Russia</span>
+        </li>
+      
+
+      
+        
+          
+        
+          
+        
+          
+            <li><a href="https://twitter.com/ShySinev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/ShyDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+          
+            <li><a href="https://linkedin.com/in/yury-sinev-659075b3" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+          
+        
+      
+
+      
+
+      
+        <li>
+          <a href="mailto:flawed.blog@gmail.com">
+            <meta itemprop="email" content="flawed.blog@gmail.com" />
+            <i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email
+          </a>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Making Pong for NES (Week 1)">
+    <meta itemprop="description" content="Making Pong for Nintendo Entertainment System (NES). Week 1. Drawing some sprites">
+    <meta itemprop="datePublished" content="January 08, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Making Pong for NES (Week 1)
+</h1>
+          
+            <p class="page__meta"><i class="far fa-clock" aria-hidden="true"></i> 
+
+
+
+
+  16 minute read
+
+</p>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right sticky">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#why">Why?</a></li>
+  <li><a href="#why-nesfamicomdendy">Why NES/Famicom/Dendy?</a></li>
+  <li><a href="#6502-assembler">6502 assembler</a></li>
+  <li><a href="#tools">Tools</a></li>
+  <li><a href="#ines-header">iNES Header</a></li>
+  <li><a href="#variables">Variables</a></li>
+  <li><a href="#interrupts">Interrupts</a></li>
+  <li><a href="#reset-interrupt">Reset interrupt</a>
+    <ul>
+      <li><a href="#initilization">Initilization</a></li>
+      <li><a href="#palettes">Palettes</a></li>
+      <li><a href="#sprites">Sprites</a></li>
+    </ul>
+  </li>
+  <li><a href="#nmi">NMI</a>
+    <ul>
+      <li><a href="#ppu-clean-up">PPU clean up</a></li>
+      <li><a href="#position-update">Position update</a></li>
+      <li><a href="#metasprite">Metasprite</a></li>
+    </ul>
+  </li>
+  <li><a href="#memory-mapping">Memory mapping</a></li>
+  <li><a href="#result">Result</a></li>
+  <li><a href="#links">Links</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+
+        
+        <div class="notice--info">
+          <h4>You can always read in a different language </h4> <br>
+
+          
+          <a style="text-decoration: none;" href=" /gamedev/homebrew-pong-for-nes-week-1 "> 🇺🇸 <b> English </b> <br> </a>
+          
+          <a style="text-decoration: none;" href=" /ru/gamedev/homebrew-pong-for-nes-week-1 "> 🇷🇺 <b> Русский </b> <br> </a>
+          
+
+        </div>
+
+        
+
+        
+<div class="notice--warning">
+  <h4> Bear in mind: </h4>
+  
+<ul>
+  <li>All I do may be completely and utterly wrong</li>
+  <li>This post may contain strong language</li>
+  <li>It’s not a tutorial. It’s just a documentation of my journey building this game with thorough explanation of what’s going on</li>
+  <li>My english sucks, so be ready for poorly worded sentences, mistakes and misunderstandings</li>
+  <li>By the way, don’t hesitate to tell me about my mistakes in the comments or through social media/email</li>
+</ul>
+
+</div>
+
+<h1 id="why">Why?</h1>
+
+<blockquote>
+  <p>Docendo discimus</p>
+</blockquote>
+
+<p>or, if you’re not into summoning a demon much:</p>
+
+<blockquote>
+  <p>By teaching, we learn</p>
+</blockquote>
+
+<p>Well, teaching is a strong word, more like trying to explain what the hell I’m doing, mostly to myself.
+And practicing english is good enough excuse to spend a week writing this.</p>
+
+<h1 id="why-nesfamicomdendy">Why NES/Famicom/Dendy?</h1>
+
+<p>I’ve always wanted to make a game for an old hardware<sup id="fnref:9e2cc8af"><a href="#fn:9e2cc8af" class="footnote">1</a></sup>. Limit myself with a lightweight assembler, very small RAM/ROM and slow CPU.
+Squeeze all the juice this hardware has. Being sure it’s gonna run all my smelly code exactly the way I intended with same performance on every unit.
+And for all that, I chose <strong>NES</strong>.</p>
+
+<p>Juice squeezing aside, let’s start with something simple, like <strong>Pong</strong>.</p>
+
+<h1 id="6502-assembler">6502 assembler</h1>
+
+<p>Assembler is not as hard as you might think, especially 6502’s. Developing for <strong>NES</strong> doesn’t seem too difficult too. Sure, after writing 6502 assembly code, you really appreciate even simplest syntactic sugar. And still, it’s not too complicated and definitely not as frustrating, annoying and unsatisfying as coding for Android<sup id="fnref:f6d4ec76"><a href="#fn:f6d4ec76" class="footnote">2</a></sup> or setting up C++ project.</p>
+
+<p>If you don’t know 6502 assembler, but still want to follow, check out this page for <a href="http://6502.org/tutorials/6502opcodes.html">opcode descriptions</a> or you can find some tutorials in <strong>Links</strong> section below.</p>
+
+<p>But basic idea:</p>
+<ul>
+  <li>You load some value in one of three registers (<code class="highlighter-rouge">LDA</code>, <code class="highlighter-rouge">LDX</code>, <code class="highlighter-rouge">LDY</code>)</li>
+  <li>You manipulate this data (<code class="highlighter-rouge">INX</code> - increment <code class="highlighter-rouge">X</code> register by one, for example)</li>
+  <li>You store resulting data (<code class="highlighter-rouge">STA</code>, <code class="highlighter-rouge">STX</code>, <code class="highlighter-rouge">STY</code>)</li>
+  <li>And then branching, transfer between registers, subroutines and all that fun stuff</li>
+</ul>
+
+<p>Or you can just read this post purely for it’s entertainment value, if you think it has one.</p>
+
+<h1 id="tools">Tools</h1>
+
+<p>I’m going to use <strong>Windows</strong>, <strong>FCEUX</strong> emulator, <strong>NESst</strong> and <strong>nesasm3</strong> assembler. Also, I grabbed <code class="highlighter-rouge">nesdefs.asm</code> and <code class="highlighter-rouge">nesppu.asm</code> from <a href="https://8bitworkshop.com/">8bitworkshop</a><sup id="fnref:f7f95d4a"><a href="#fn:f7f95d4a" class="footnote">3</a></sup> and ported it to <strong>nesasm</strong><sup id="fnref:b82c9141"><a href="#fn:b82c9141" class="footnote">4</a></sup>. This 2 files contains many useful constants and macros.</p>
+
+<h1 id="ines-header">iNES Header</h1>
+
+<p>Every rom starts with a header, iNES header in our case:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">.</span><span class="kr">inesprg</span> <span class="m">1</span>   <span class="c1">; 1x 16KB PRG code</span>
+  <span class="p">.</span><span class="kr">ineschr</span> <span class="m">1</span>   <span class="c1">; 1x  8KB CHR data</span>
+  <span class="p">.</span><span class="kr">inesmap</span> <span class="m">0</span>   <span class="c1">; mapper 0 = NROM, no bank swapping</span>
+  <span class="p">.</span><span class="kr">inesmir</span> <span class="m">1</span>   <span class="c1">; background mirroring</span>
+</code></pre></div></div>
+
+<p>So, here we have:</p>
+<ul>
+  <li><em>1</em> 16kb PRG ROM - basically our game/engine code</li>
+  <li><em>1</em> 8kb chr rom - our graphics data.</li>
+  <li>No bank switching  (32 kb PRG max)</li>
+  <li>vertical background mirroring</li>
+</ul>
+
+<p>For pong this configuration should be plenty.</p>
+
+<p class="notice--info">Header is not really part of the rom and only used by emulators (and probably flash catridges).</p>
+
+<h1 id="variables">Variables</h1>
+
+<p>16 bit variable for left paddle position looks like this:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">paddle1PosLo</span> <span class="p">.</span><span class="kr">rs</span> <span class="m">1</span> <span class="c1">; low byte of the left paddle's position</span>
+<span class="nf">paddle1PosHi</span> <span class="p">.</span><span class="kr">rs</span> <span class="m">1</span> <span class="c1">; high byte of the left paddle's position</span>
+</code></pre></div></div>
+
+<p>Format: <code class="highlighter-rouge">variable_name</code> <code class="highlighter-rouge">.rs</code> <code class="highlighter-rouge">n bytes</code> <br />
+<code class="highlighter-rouge">.rs</code> - reserves n bytes of memory for this variable.
+<br />We can declare it as 1 variable with <strong>.rs 2</strong> and then use LOW and HIGH syntax to access low and high byte.</p>
+
+<p class="notice--info">We don’t really need low byte of the paddle’s position at this point, but we’re definitely gonna need it later for 16 bit movement calculations.
+<br />16 bit calculation will help us achieve smooth and nice motion.</p>
+
+<h1 id="interrupts">Interrupts</h1>
+
+<p>Interrupts are something like hardware events. For example, user hits reset button, that triggers CPU interrupt and program counter jumps to your interrupt vector.</p>
+
+<p>NES has 3 of those:</p>
+<ul>
+  <li><strong>NMI</strong> ($FFFA-$FFFB) or Non-Maskable Interrupt - called at the end of each frame (or at the start of vertical blanking)</li>
+  <li><strong>Reset</strong> ($FFFC-$FFFD) - called each time reset button is pressed (<em>dah</em>) or each time the program is started</li>
+  <li><strong>IRQ+BRK</strong> ($FFFE-$FFFF) - something we don’t need right now and I don’t honestly know exactly what it does at the moment. Don’t forget, my prior experience is a couple of weeks screwing around with emulator
+and reading some articles.</li>
+</ul>
+
+<p>We declare interrupt vectors like this:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="kr">macro</span> <span class="nf">NES_VECTORS</span>
+  <span class="p">.</span><span class="kr">org</span> <span class="mh">$fffa</span>		<span class="c1">; start at address $fffa</span>
+  <span class="p">.</span><span class="kt">dw</span> <span class="nf">NMIHandler</span>	<span class="c1">; $fffa vblank nmi</span>
+  <span class="p">.</span><span class="kt">dw</span> <span class="nf">Reset</span>		<span class="c1">; $fffc reset</span>
+  <span class="p">.</span><span class="kt">dw</span> <span class="m">0</span>	<span class="c1">; $fffe irq / brk</span>
+  <span class="p">.</span><span class="kr">ENDM</span>
+</code></pre></div></div>
+
+<h1 id="reset-interrupt"><strong>Reset</strong> interrupt</h1>
+
+<h2 id="initilization">Initilization</h2>
+
+<p>At this stage we need to disable PPU<sup id="fnref:6157e0dc"><a href="#fn:6157e0dc" class="footnote">5</a></sup>, interrupts and decimal mode (NES CPU doesn’t support it anyway), set up stack pointer and more.</p>
+
+<p class="notice--info">NES CPU (2A03) is a stripped down 6502 CPU, it lacks decimal mode, but has specific memory-mapped registers for I/O, sound, PPU, etc</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nf">NES_INIT</span>	<span class="c1">; set up stack pointer, turn off PPU</span>
+  <span class="k">jsr</span> <span class="nf">WaitSync</span>	<span class="c1">; wait for VSYNC</span>
+  <span class="k">jsr</span> <span class="nf">ClearRAM</span>	<span class="c1">; clear RAM</span>
+  <span class="k">jsr</span> <span class="nf">WaitSync</span>	<span class="c1">; wait for VSYNC (and PPU warmup)</span>
+</code></pre></div></div>
+
+<p class="notice--info"><code class="highlighter-rouge">NES_INIT</code> is a macro located in the <code class="highlighter-rouge">nesdefs.asm</code> file and can be included in the main file (<code class="highlighter-rouge">pong.asm</code> in my case) by writing <code class="highlighter-rouge">.include "nesdefs.asm"</code> at the start.</p>
+
+<p>Here is what <code class="highlighter-rouge">NES_INIT</code> actually does:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">.</span><span class="kr">macro</span> <span class="nf">NES_INIT</span>
+    <span class="k">sei</span>	<span class="c1">;disable IRQs</span>
+    <span class="k">cld</span>	<span class="c1">;decimal mode not supported</span>
+    <span class="k">ldx</span> <span class="mh">#$ff</span>
+    <span class="k">txs</span>	<span class="c1">;set up stack pointer</span>
+    <span class="k">inx</span>	<span class="c1">;increment X to 0</span>
+    <span class="k">stx</span> <span class="nf">PPU_MASK</span> <span class="c1">;disable rendering</span>
+    <span class="k">stx</span> <span class="nf">DMC_FREQ</span> <span class="c1">;disable DMC interrupts</span>
+    <span class="k">stx</span> <span class="nf">PPU_CTRL</span> <span class="c1">;disable NMI interrupts</span>
+    <span class="k">bit</span> <span class="nf">PPU_STATUS</span> <span class="c1">;clear VBL flag</span>
+    <span class="k">bit</span> <span class="nf">APU_CHAN_CTRL</span> <span class="c1">;ack DMC IRQ bit 7 ; what?</span>
+    <span class="k">lda</span> <span class="mh">#$40</span>
+    <span class="k">sta</span> <span class="nf">APU_FRAME</span> <span class="c1">;disable APU Frame IRQ</span>
+    <span class="k">lda</span> <span class="mh">#$0F</span>
+    <span class="k">sta</span> <span class="nf">APU_CHAN_CTRL</span> <span class="c1">;disable DMC, enable/init other channels.</span>
+  <span class="p">.</span><span class="kr">endm</span>
+</code></pre></div></div>
+
+<p><strong>VSYNC</strong>. We’re just checking if highest bit (bit 7) of <code class="highlighter-rouge">PPU_STATUS</code> ($2002) is 1.</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">WaitSync:</span>
+  <span class="k">bit</span> <span class="nf">PPU_STATUS</span> <span class="c1">; triggers Negative CPU flag</span>
+  <span class="k">bpl</span> <span class="nf">WaitSync</span>
+  <span class="k">rts</span>
+</code></pre></div></div>
+
+<p><strong>Clear RAM</strong>. This is necessary, because we can not be sure what’s in the ram when reset interrupt is triggered.
+So we should always assume, that the content of the ram at reset is unusable garbage and may not be all 0’s as you might be expected.</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">ClearRAM:</span>
+  <span class="k">lda</span> <span class="m">#0</span> <span class="c1">; A = 0</span>
+  <span class="k">tax</span> <span class="c1">; X = 0</span>
+<span class="p">.</span><span class="nf">clearRAM</span>
+  <span class="k">sta</span> <span class="mh">$0</span><span class="p">,</span><span class="nf">x</span> <span class="c1">; clear $0-$ff</span>
+  <span class="k">cpx</span> <span class="mh">#$fe</span> <span class="c1">; last 2 bytes of stack?</span>
+  <span class="k">bcs</span> <span class="p">.</span><span class="nf">skipStack</span> <span class="c1">; don't clear it</span>
+  <span class="k">sta</span> <span class="mh">$100</span><span class="p">,</span><span class="nf">x</span> <span class="c1">; clear $100-$1fd</span>
+<span class="p">.</span><span class="nf">skipStack</span>
+  <span class="k">sta</span> <span class="mh">$200</span><span class="p">,</span><span class="nf">x</span> <span class="c1">; clear $200-$2ff</span>
+  <span class="k">sta</span> <span class="mh">$300</span><span class="p">,</span><span class="nf">x</span> <span class="c1">; clear $300-$3ff</span>
+  <span class="k">sta</span> <span class="mh">$400</span><span class="p">,</span><span class="nf">x</span> <span class="c1">; clear $400-$4ff</span>
+  <span class="k">sta</span> <span class="mh">$500</span><span class="p">,</span><span class="nf">x</span> <span class="c1">; clear $500-$5ff</span>
+  <span class="k">sta</span> <span class="mh">$600</span><span class="p">,</span><span class="nf">x</span> <span class="c1">; clear $600-$6ff</span>
+  <span class="k">sta</span> <span class="mh">$700</span><span class="p">,</span><span class="nf">x</span> <span class="c1">; clear $700-$7ff</span>
+  <span class="k">inx</span> <span class="c1">; X = X + 1</span>
+  <span class="k">bne</span> <span class="p">.</span><span class="nf">clearRAM</span> <span class="c1">; loop 256 times</span>
+  <span class="k">rts</span>
+</code></pre></div></div>
+
+<p>And another <strong>VSYNC</strong> for a good measure.</p>
+
+<h2 id="palettes">Palettes</h2>
+
+<p>Next we need to tell NES where palette information is gonna be stored ($3F00).</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">lda</span> <span class="mh">#$3f</span>	<span class="c1">; $3F -&gt; A register</span>
+  <span class="k">ldy</span> <span class="mh">#$00</span>	<span class="c1">; $00 -&gt; Y register</span>
+  <span class="k">sta</span> <span class="nf">PPU_ADDR</span>	<span class="c1">; write #HIGH byte first</span>
+  <span class="k">sty</span> <span class="nf">PPU_ADDR</span>  <span class="c1">; $3F00 -&gt; PPU address</span>
+</code></pre></div></div>
+
+<p>In <strong>NES_INIT</strong> macro we disabled NMI and rendering, now, after we initialized palettes, it’s time to re-enable it.</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">lda</span> <span class="nf">#CTRL_NMI</span>
+  <span class="k">sta</span> <span class="nf">PPU_CTRL</span>	<span class="c1">; enable NMI</span>
+  <span class="k">lda</span> <span class="nf">#MASK_COLOR</span>
+  <span class="k">sta</span> <span class="nf">PPU_MASK</span>	<span class="c1">; enable rendering</span>
+</code></pre></div></div>
+
+<p>PPU_CTRL bits:
+<img src="/assets/images/PPU_CTRL.PNG" alt="ppu_ctrl" /></p>
+
+<p>PPU_MASK bits:
+<img src="/assets/images/PPU_MASK.PNG" alt="ppu_mask" /></p>
+
+<p class="notice--info">You can preview what grayscale and color emphasis would look like with your palette and sprites in NESst
+<img src="/assets/images/nesST_colorEmphasis.png" alt="nesST" /></p>
+
+<p>You can include palettes as a binary file:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Pallete:</span>
+  <span class="kr">incbin</span> <span class="s">"palette.pal"</span>
+</code></pre></div></div>
+
+<p class="notice--info"><code class="highlighter-rouge">palette.pal</code> is a simple binary file with no header or anything and contains palettes data: <br />
+$0f,$00,$28,$30,$0f,$01,$21,$31,$0f,$06,$16,$26,$0f,$09,$19,$29,
+$0f,$00,$28,$30,$0f,$01,$21,$31,$0f,$06,$16,$26,$0f,$09,$19,$29</p>
+
+<p>or just include binary data as a plain text:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">Palette:</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="mh">$0f</span><span class="p">,</span><span class="mh">$00</span><span class="p">,</span><span class="mh">$28</span><span class="p">,</span><span class="mh">$30</span><span class="p">,</span><span class="mh">$0f</span><span class="p">,</span><span class="mh">$01</span><span class="p">,</span><span class="mh">$21</span><span class="p">,</span><span class="mh">$31</span><span class="p">,</span><span class="mh">$0f</span><span class="p">,</span><span class="mh">$06</span><span class="p">,</span><span class="mh">$16</span><span class="p">,</span><span class="mh">$26</span><span class="p">,</span><span class="mh">$0f</span><span class="p">,</span><span class="mh">$09</span><span class="p">,</span><span class="mh">$19</span><span class="p">,</span><span class="mh">$29</span> <span class="c1">;;background</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="mh">$0f</span><span class="p">,</span><span class="mh">$00</span><span class="p">,</span><span class="mh">$28</span><span class="p">,</span><span class="mh">$30</span><span class="p">,</span><span class="mh">$0f</span><span class="p">,</span><span class="mh">$01</span><span class="p">,</span><span class="mh">$21</span><span class="p">,</span><span class="mh">$31</span><span class="p">,</span><span class="mh">$0f</span><span class="p">,</span><span class="mh">$06</span><span class="p">,</span><span class="mh">$16</span><span class="p">,</span><span class="mh">$26</span><span class="p">,</span><span class="mh">$0f</span><span class="p">,</span><span class="mh">$09</span><span class="p">,</span><span class="mh">$19</span><span class="p">,</span><span class="mh">$29</span> <span class="c1">;;sprites</span>
+</code></pre></div></div>
+
+<p>This numbers correspond to color from internal NES’ palette: <sup id="fnref:27e518f9"><a href="#fn:27e518f9" class="footnote">6</a></sup></p>
+
+<p><img src="/assets/images/Savtool-swatches.png" alt="NES palette" /></p>
+
+<p>1 set of 4 palettes for background and 1 set for sprites.</p>
+
+<p class="notice--info">In nesST you can click “Palettes” -&gt; “Put to the clipboard” -&gt; “ASM data” to copy a palette. Don’t forget, that only copies one palette set (16 colors) at a time.</p>
+
+<p><strong>Load palettes</strong></p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">LoadPalettes:</span>
+  <span class="k">lda</span> <span class="nf">PPU_STATUS</span> <span class="c1">; read PPU status to reset the #HIGH/#LOW latch</span>
+  <span class="k">lda</span> <span class="mh">#$3F</span>
+  <span class="k">sta</span> <span class="nf">PPU_ADDR</span>   <span class="c1">; write the #HIGH byte of $3F00 address</span>
+  <span class="k">lda</span> <span class="mh">#$00</span>
+  <span class="k">sta</span> <span class="nf">PPU_ADDR</span>   <span class="c1">; write the #LOW byte of $3F00 address</span>
+  <span class="k">ldx</span> <span class="mh">#$00</span>  <span class="c1">; start out at 0</span>
+<span class="nf">LoadPalettesLoop:</span>
+  <span class="k">lda</span> <span class="nf">Palette</span><span class="p">,</span> <span class="nf">x</span>  <span class="c1">; load data from address (palette + the value in x)</span>
+  <span class="k">sta</span> <span class="nf">PPU_DATA</span>    <span class="c1">; write to PPU</span>
+  <span class="k">inx</span>                   <span class="c1">; x += 1</span>
+  <span class="k">cpx</span> <span class="mh">#$20</span>              <span class="c1">; Compare X to hex $20, decimal 32 (background + sprites palletes (4*4) * 2)</span>
+  <span class="k">bne</span> <span class="nf">LoadPalettesLoop</span>  <span class="c1">; Branch to LoadPalettes loop if compare was Not Equal to zero</span>
+                        <span class="c1">; if compare was equal to 32, keep going down</span>
+</code></pre></div></div>
+
+<p>Here we just copying our palette’s data to $3f00.</p>
+
+<p class="notice--info">Remember how we set up location to store palette data earlier? Yes, it was $3f00</p>
+
+<h2 id="sprites">Sprites</h2>
+
+<p>This is the first page (left side) of my chr rom:<br />
+<img src="/assets/images/pongTileset1.bmp" alt="128x128 tileset" /></p>
+
+<p><strong>Loading sprites</strong></p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">lda</span> <span class="mh">#$00</span>
+  <span class="k">sta</span> <span class="nf">OAM_ADDR</span> <span class="c1">; set the #LOW byte (00) of the RAM address</span>
+  <span class="k">lda</span> <span class="mh">#$02</span>
+  <span class="k">sta</span> <span class="nf">OAM_DMA</span>  <span class="c1">; set the #HIGH byte (02) of the RAM address, start the transfer</span>
+</code></pre></div></div>
+
+<p>Writing <code class="highlighter-rouge">$0200</code> to OAM RAM address.<br />
+<code class="highlighter-rouge">$0200</code>-<code class="highlighter-rouge">$02FF</code> now will contain copy of OAM (64 entries).</p>
+
+<p>This macro will simplify sprite loading routine:</p>
+
+<p><strong><em>graphics.asm</em></strong></p>
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; \1 sprites W/ offsets \2 offset \3 sprites count</span>
+<span class="nf">LoadSprites</span> <span class="p">.</span><span class="kr">macro</span>
+  <span class="k">ldx</span> <span class="mh">#$00</span>
+<span class="nf">LoadSpritesLoop</span><span class="nb">\@</span><span class="o">:</span>
+  <span class="k">lda</span> <span class="nb">\1</span><span class="p">,</span> <span class="nf">x</span>
+  <span class="k">sta</span> <span class="nf">OAM_RAM</span><span class="o">+</span><span class="nb">\2</span><span class="p">,</span> <span class="nf">x</span>
+  <span class="k">inx</span>
+  <span class="k">cpx</span> <span class="nb">\3</span>
+  <span class="k">bne</span> <span class="nf">LoadSpritesLoop</span><span class="nb">\@</span>
+  <span class="p">.</span><span class="kr">endm</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">\@</code> - Special parameter that returns a different number for each macro. <br />
+<code class="highlighter-rouge">\1-\3</code> - input parameters.</p>
+
+<p>In C it would’ve looked something like this:</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="kt">void</span> <span class="nf">LoadSprites</span><span class="p">(</span><span class="n">byte</span> <span class="n">sprites</span><span class="p">,</span> <span class="n">byte</span> <span class="n">offset</span><span class="p">,</span> <span class="n">byte</span> <span class="n">spritesCount</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">};</span>
+</code></pre></div></div>
+
+<p>So, we are loading our metasprite data (<code class="highlighter-rouge">sprites</code>) into OAM_RAM with <code class="highlighter-rouge">offset</code>
+while X not equal to length of metasprite (<code class="highlighter-rouge">sprites count</code>)</p>
+
+<p>Calling this macro:</p>
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nf">LoadSprites</span> <span class="nf">MiddlePadle</span><span class="p">,</span> <span class="mh">#$00</span><span class="p">,</span> <span class="mh">#$10</span>
+</code></pre></div></div>
+
+<p class="notice--warning">By the way, only now I noticed that I call paddle’s metasprite - “MiddlePadle”. Don’t pay much attention, I wanted to make 3 differently sized paddles, as power-ups, so…
+<br />Maybe we’ll do</p>
+
+<p>Here is what MiddlePaddle metasprite looks like:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">MiddlePadle:</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="m">0</span><span class="p">,</span>  <span class="mh">$03</span><span class="p">,</span> <span class="mh">$00</span><span class="p">,</span> <span class="mh">$00</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="m">8</span><span class="p">,</span>  <span class="mh">$04</span><span class="p">,</span> <span class="mh">$00</span><span class="p">,</span> <span class="mh">$00</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="m">16</span><span class="p">,</span> <span class="mh">$04</span><span class="p">,</span> <span class="mh">$00</span><span class="p">,</span> <span class="mh">$00</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="m">24</span><span class="p">,</span> <span class="mh">$02</span><span class="p">,</span> <span class="mh">$00</span><span class="p">,</span> <span class="mh">$00</span>
+</code></pre></div></div>
+
+<p class="notice--info">Just a reminder. <br />
+To indicate numeral system, you can prefix number with:<br />
+<code class="highlighter-rouge">%</code> - binary<br />
+<code class="highlighter-rouge">$</code> - hex<br />
+<code class="highlighter-rouge">no prefix</code> - decimal.</p>
+
+<p>Let’s examine first row:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">;vert sprite attr horiz</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="m">0</span><span class="p">,</span> <span class="mh">$03</span><span class="p">,</span> <span class="mh">$00</span><span class="p">,</span> <span class="mh">$00</span>
+</code></pre></div></div>
+
+<ul>
+  <li>
+    <p>First byte is <code class="highlighter-rouge">y</code> screen coordinate.</p>
+  </li>
+  <li>
+    <p>Second byte - sprite index. In our .chr file $03 corresponds to this sprite.</p>
+  </li>
+</ul>
+
+<p><img src="/assets/images/paddle1.PNG" alt="paddle_graphics" /></p>
+
+<ul>
+  <li>Third byte is attributes <sup id="fnref:8f138dca"><a href="#fn:8f138dca" class="footnote">7</a></sup></li>
+</ul>
+
+<p><img src="/assets/images/attributeBits.PNG" alt="attribute bits" /></p>
+
+<p>Two least significant bits are palette number. 00 - first palette set, 01 - second, 10 - third, 11 - fourth. So, 0-3 in binary. Pretty straightforward.</p>
+
+<ul>
+  <li>Fourth byte is <code class="highlighter-rouge">x</code> screen coordinate.</li>
+</ul>
+
+<p class="notice--info">In our case both <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> screen coordinates not absolute, but relative. So, <code class="highlighter-rouge">0</code> is not an <code class="highlighter-rouge">y</code> position, but an offset of <code class="highlighter-rouge">y</code> coordinate. <strong>We offset each sprite by <code class="highlighter-rouge">8</code> (decimal), on account of using 8x8 pixels sprites.</strong><sup id="fnref:dd593263"><a href="#fn:dd593263" class="footnote">8</a></sup>
+Since we have 2 paddles (right and left), it’s a good idea to use offsets, so we can re-use same metasprite information for both paddles.</p>
+
+<p>Initialize variables. <code class="highlighter-rouge">$80</code> - is a middle of the screen.</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">lda</span> <span class="mh">#$80</span>
+  <span class="k">sta</span> <span class="nf">paddle1PosHi</span>
+  <span class="k">lda</span> <span class="mh">#$00</span>
+  <span class="k">sta</span> <span class="nf">paddle1PosLo</span>
+</code></pre></div></div>
+
+<p>Now, all it’s left is wait for NMI interrupt.</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">.</span><span class="nf">endless</span>
+  <span class="k">jmp</span> <span class="p">.</span><span class="nf">endless</span>	<span class="c1">; endless loop</span>
+</code></pre></div></div>
+
+<h1 id="nmi"><strong>NMI</strong></h1>
+
+<h2 id="ppu-clean-up">PPU clean up</h2>
+
+<p>Next step - prepare PPU to render next frame.
+And there is OAM decay, so you should update OAM content each frame. <sup id="fnref:8f138dca:1"><a href="#fn:8f138dca" class="footnote">7</a></sup></p>
+
+<p>Plus, at this point we can enable sprites by writing 1 in 4th most significant bit to PPU_MASK.</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="k">lda</span> <span class="mh">#$00</span>
+  <span class="k">sta</span> <span class="nf">OAM_ADDR</span>       <span class="c1">; set the #LOW byte (00) of the RAM address</span>
+  <span class="k">lda</span> <span class="mh">#$02</span>
+  <span class="k">sta</span> <span class="nf">OAM_DMA</span>       <span class="c1">; set the #HIGH byte (02) of the RAM address, start the transfer</span>
+
+  <span class="c1">;;This is the PPU clean up section, so rendering the next frame starts properly.</span>
+  <span class="k">lda</span> <span class="mb">#%10000000</span>   <span class="c1">; enable NMI</span>
+  <span class="k">sta</span> <span class="nf">PPU_CTRL</span>
+  <span class="k">lda</span> <span class="mb">#%00010000</span>   <span class="c1">; enable sprites</span>
+  <span class="k">sta</span> <span class="nf">PPU_MASK</span>
+  <span class="k">lda</span> <span class="mh">#$00</span>        <span class="c1">;;tell the ppu there is no background scrolling</span>
+  <span class="k">sta</span> <span class="mh">$2005</span>
+  <span class="k">sta</span> <span class="mh">$2005</span>
+</code></pre></div></div>
+
+<h2 id="position-update">Position update</h2>
+
+<p>Now we only need to update paddle’s position and tell PPU to draw it on screen in this new position.</p>
+
+<p class="notice--info">Although we are not changing paddle’s position now, this function will be helpful later</p>
+
+<p>This next macro just adds current position of a paddle and offset to form a paddle’s metasprite.</p>
+
+<p><strong><em>transform.asm</em></strong></p>
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">;; \1 posYHi \2 posXHi \3 offset</span>
+<span class="nf">UpdatePos</span>  <span class="p">.</span><span class="kr">macro</span>
+  <span class="k">ldx</span> <span class="mh">#$03</span>
+  <span class="k">ldy</span> <span class="mh">#$00</span>
+  <span class="nf">UpdatePosLoop</span><span class="nb">\@</span><span class="o">:</span>
+    <span class="k">lda</span> <span class="nb">\1</span>
+    <span class="k">clc</span>
+    <span class="k">adc</span> <span class="nf">MiddlePadle</span><span class="p">,</span> <span class="nf">y</span> <span class="c1">; add high byte of current y position to y offset (first byte of paddle's OAM ROM)</span>
+    <span class="k">sta</span> <span class="nf">OAM_RAM</span><span class="o">+</span><span class="nb">\3</span><span class="p">,</span> <span class="nf">y</span> <span class="c1">; store it in OAM RAM with offset</span>
+    <span class="k">lda</span> <span class="nb">\2</span> <span class="c1">; x position is constant for paddle</span>
+    <span class="k">sta</span> <span class="nf">OAM_RAM</span><span class="o">+</span><span class="nb">\3</span><span class="p">,</span> <span class="nf">x</span>
+
+    <span class="k">inx</span>
+    <span class="k">inx</span>
+    <span class="k">inx</span>
+    <span class="k">inx</span>
+
+    <span class="k">iny</span>
+    <span class="k">iny</span>
+    <span class="k">iny</span>
+    <span class="k">iny</span>
+
+  <span class="k">cpy</span> <span class="mh">#$10</span> <span class="c1">; you can live it as constant or make it fourth argument</span>
+  <span class="k">bne</span> <span class="nf">UpdatePosLoop</span><span class="nb">\@</span>
+  <span class="p">.</span><span class="kr">endm</span>
+</code></pre></div></div>
+
+<p>And we call it like this:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nf">UpdatePos</span> <span class="nf">paddle1PosHi</span><span class="p">,</span> <span class="mh">#$0C</span><span class="p">,</span> <span class="mh">#$00</span>
+</code></pre></div></div>
+
+<p>You probably noticed 4 <code class="highlighter-rouge">inx</code> and <code class="highlighter-rouge">iny</code> instructions in a row and thought it looks stupid. Yeah, well, it does, but it’s not really that stupid if you think about it.
+You could’ve wrote like this instead:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+  <span class="k">txa</span> <span class="c1">; 2 cycles</span>
+  <span class="k">clc</span> <span class="c1">; 2 cycles</span>
+  <span class="k">adc</span> <span class="m">4</span> <span class="c1">; 2 cycles</span>
+  <span class="k">tax</span> <span class="c1">; 2 cycles</span>
+
+</code></pre></div></div>
+
+<p>So, 4 instructions, 8 cycles. Same as just calling <code class="highlighter-rouge">inx</code> 4 times. See? It’s not stupid, it’s maybe lazy, but quite efficient.</p>
+
+<h2 id="metasprite">Metasprite</h2>
+
+<p>Let’s look at our middle paddle’s OAM ROM again:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">MiddlePadle:</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="m">0</span><span class="p">,</span>  <span class="mh">$03</span><span class="p">,</span> <span class="mh">$00</span><span class="p">,</span> <span class="mh">$00</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="m">8</span><span class="p">,</span>  <span class="mh">$04</span><span class="p">,</span> <span class="mh">$00</span><span class="p">,</span> <span class="mh">$00</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="m">16</span><span class="p">,</span> <span class="mh">$04</span><span class="p">,</span> <span class="mh">$00</span><span class="p">,</span> <span class="mh">$00</span>
+  <span class="p">.</span><span class="kt">db</span> <span class="m">24</span><span class="p">,</span> <span class="mh">$02</span><span class="p">,</span> <span class="mh">$00</span><span class="p">,</span> <span class="mh">$00</span>
+</code></pre></div></div>
+
+<p>Each sprite only 8x8 pixels. Mario, for example, is a <strong><em>bit</em></strong> bigger, than that. Especially, well, big Mario.
+To form a big Mario’s metasprite you need to combine a few sprites.<br />
+Look at this Gif:</p>
+
+<p><img src="/assets/images/marioMetasprite.gif" alt="Mario's metasprite" /></p>
+
+<p>And same with our paddle. Pay close attention to <code class="highlighter-rouge">x</code> and <code class="highlighter-rouge">y</code> offsets, sprite index and attributes.</p>
+
+<p><img src="/assets/images/pongMetasprite.gif" alt="paddle's metasprite" /></p>
+
+<p>And don’t forget to put return from interrupt (<code class="highlighter-rouge">RTI</code>) opcode at the end.</p>
+
+<p class="notice--warning"><a href="https://8bitworkshop.com/">8bitworkshop</a> uses SAVE_REGS and RESTORE_REGS at the start and the end of NMI respectively. I don’t really know why it’s necessary.
+This macros pushing registers to stack (SAVE) and pulling registers from stack (RESTORE). You can find macros’ code in <code class="highlighter-rouge">nesdefs.asm</code></p>
+
+<h1 id="memory-mapping">Memory mapping</h1>
+
+<p>Couple of words about memory mapping and how we handle it right now.</p>
+
+<p>In iNES header we declared 1 prg rom (2 banks, each 8 kb, 16kb in total) and 1 chr rom (1 bank, 8 kb in total).
+You probably already noticed, every bank exactly 8 kb in size.</p>
+
+<p>PRG can be accessed through CPU memory addresses <code class="highlighter-rouge">$8000 - $FFF9</code>.
+Look at this image by <strong>BunnyBoy</strong>:
+<img src="/assets/images/cpumemmap.png" alt="cpu memory map" /></p>
+
+<p>So, we put our PRG rom data in the first half of 32 kb reserved for cartridge rom - first bank in <code class="highlighter-rouge">$8000</code>, second in <code class="highlighter-rouge">$A000</code>.</p>
+
+<p class="notice--info">You should use a mapper, if you need more than 32kb of PRG</p>
+
+<p>CHR rom connected to PPU and copy of chr rom stored in memory addresses <code class="highlighter-rouge">$0000-$2000</code>.
+<br />And you guessed it - it’s bank 3.</p>
+
+<ul>
+  <li>In first bank we store all <code class="highlighter-rouge">Reset</code> and <code class="highlighter-rouge">NMI</code> code</li>
+  <li>In second bank - palette data and pattern tables (our MiddlePaddle OAM ROM data)</li>
+  <li>In third - our pong.chr</li>
+</ul>
+
+<p>In code it looks something like this:</p>
+
+<div class="language-nesasm highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="p">.</span><span class="kr">bank</span> <span class="m">0</span>
+  <span class="p">.</span><span class="kr">org</span> <span class="mh">$8000</span> <span class="c1">;first 8 kb of prg</span>
+<span class="nf">Reset:</span>
+  <span class="nf">NES_INIT</span>	<span class="c1">; set up stack pointer, turn off PPU</span>
+  <span class="k">jsr</span> <span class="nf">WaitSync</span>	<span class="c1">; wait for VSYNC</span>
+  <span class="k">jsr</span> <span class="nf">ClearRAM</span>	<span class="c1">; clear RAM</span>
+  <span class="k">jsr</span> <span class="nf">WaitSync</span>	<span class="c1">; wait for VSYNC (and PPU warmup)</span>
+
+  <span class="p">...</span>
+</code></pre></div></div>
+
+<p>Don’t think about it too hard for now. We’re gonna explore memory mapping and, well, mappers later. Probably. Maybe.</p>
+
+<h1 id="result">Result</h1>
+
+<p>And after all your blood, toil, tears and sweat, if the Moon is in right state and you well-behaved all year, you’ll see</p>
+
+<p><strong>Drumroll, please</strong></p>
+
+<p><img src="/assets/images/pong-1.png" alt="hey, it's pong" /></p>
+
+<p>A lot of work to display 32x8 pixels metasprite on empty 256x224 pixels screen. But I don’t know about you, for me it’s still satisfying as hell.</p>
+
+<h1 id="links">Links</h1>
+
+<p>You can find a source code here: <a href="https://github.com/ShyDev/PongForNES">github</a></p>
+
+<p>Some related links:</p>
+<ul>
+  <li>Thanks to <a href="https://twitter.com/cppchriscpp">@cppchriscpp</a> we now have a mirror of great tutorial series <a href="http://nerdy-nights.nes.science/">Nerdy Nights</a>. Highly recommended.</li>
+  <li><a href="https://8bitworkshop.com/">8bitworkshop</a></li>
+  <li>Great video series about 6502 by <a href="https://www.youtube.com/watch?v=LnzuMJLZRdU">Ben Eater</a></li>
+  <li>Tons of useful information about 6502 <a href="http://6502.org/">6502.org</a></li>
+  <li>Tons of useful information about NES <a href="http://nesdev.com/">nesdev</a></li>
+</ul>
+<div class="footnotes">
+  <ol>
+    <li id="fn:9e2cc8af">
+      <p>I mean, famicom already 36 years old. Holy shit <a href="#fnref:9e2cc8af" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:f6d4ec76">
+      <p>Just kidding, chill <a href="#fnref:f6d4ec76" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:f7f95d4a">
+      <p>By the way, great online IDE for 6502 assembler/cc65 with emulators of many 8 bit systems, contains some useful tools, syntax highlighting, etc. If you’re OK with online IDE’s, definitely check it out. <a href="#fnref:f7f95d4a" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:b82c9141">
+      <p>I only ported some code, that I’m gonna use in this game. So, it’s not a full port. <a href="#fnref:b82c9141" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6157e0dc">
+      <p>PPU or Picture Processing Unit - rtx2080 in the 8 bit world. More like adreno to be exact, since it’s a video chip and not a video card <a href="#fnref:6157e0dc" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:27e518f9">
+      <p><a href="https://wiki.nesdev.com/w/index.php/PPU_palettes">PPU palettes (nesdev’s wiki)</a> <a href="#fnref:27e518f9" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8f138dca">
+      <p><a href="https://wiki.nesdev.com/w/index.php/PPU_OAM">PPU OAM (nesdev’s wiki)</a> <a href="#fnref:8f138dca" class="reversefootnote">&#8617;</a> <a href="#fnref:8f138dca:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+    <li id="fn:dd593263">
+      <p>By 8, don’t screw up like I did. If you offset <code class="highlighter-rouge">x</code> and/or <code class="highlighter-rouge">y</code> only by 1, you’ll have a lot of problems, including problems with sprite priority. I know it’s sound obvious, but I managed to overlook it at first <a href="#fnref:dd593263" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#6502" class="page__taxonomy-item" rel="tag">6502</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#nes" class="page__taxonomy-item" rel="tag">NES</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#gamedev" class="page__taxonomy-item" rel="tag">GameDev</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-01-08T23:45:00+04:00">January 08, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?via=ShySinev&text=Making+Pong+for+NES+%28Week+1%29%20https%3A%2F%2Fflawed.blog%2Fgamedev%2Fhomebrew-pong-for-nes-week-1" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fflawed.blog%2Fgamedev%2Fhomebrew-pong-for-nes-week-1" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fflawed.blog%2Fgamedev%2Fhomebrew-pong-for-nes-week-1" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+    </div>
+
+    
+      <div class="page__comments">
+  
+  
+      <h4 class="page__comments-title">Comments</h4>
+      <section id="disqus_thread">
+          <div>
+              <button id="show-comments-button" onclick="disqus();return false;" > <i class="fas fa-comments"></i> Show Comments</button>
+          </div>
+      </section>
+    
+</div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+            
+      </div>
+    </div>
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="Enter your search term..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<div class="page__footer-language_switch">
+    <ul class="social-icons">
+        
+        <li> <a style="text-shadow: 0 0 5px #141178, 0 0 7px #141178;" href=" /gamedev/homebrew-pong-for-nes-week-1 "> 🇺🇸 <b> English </b> </a> </li>
+        
+        <li> <a  href=" /ru/gamedev/homebrew-pong-for-nes-week-1 "> 🇷🇺 <b> Русский </b> </a> </li>
+        
+    </ul>
+</div>
+<!-- end custom footer snippets -->
+
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://twitter.com/ShySinev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/ShyDev" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          <li><a href="https://linkedin.com/in/yury-sinev-659075b3" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i> LinkedIn</a></li>
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Yury Sinev. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "https://flawed.blog/gamedev/homebrew-pong-for-nes-week-1";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/gamedev/making-pong-for-nes-week-1"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    function disqus() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://flawed-blog.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    };
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

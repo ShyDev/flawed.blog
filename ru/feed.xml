@@ -1,15 +1,562 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://flawed.blog/ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://flawed.blog/ru/" rel="alternate" type="text/html" /><updated>2019-12-10T20:33:15+04:00</updated><id>https://flawed.blog/feed.xml</id><title type="html">flawed</title><subtitle>My personal blog about Unity, developing homebrew NES games, OpenGL and gamedev in general</subtitle><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><entry xml:lang="en"><title type="html">Test</title><link href="https://flawed.blog/ru/test/" rel="alternate" type="text/html" title="Test" /><published>2019-12-01T15:48:12+04:00</published><updated>2019-12-01T15:48:12+04:00</updated><id>https://flawed.blog/test</id><content type="html" xml:base="https://flawed.blog/test/">&lt;p&gt;test&lt;/p&gt;</content><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><summary type="html">test</summary></entry><entry xml:lang="ru"><title type="html">Welcome to Jekyll!</title><link href="https://flawed.blog/ru/welcome/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-12-01T15:44:12+04:00</published><updated>2019-12-01T15:44:12+04:00</updated><id>https://flawed.blog/welcome-to-jekyll</id><content type="html" xml:base="https://flawed.blog/welcome/">&lt;p&gt;приветствие на русском&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://flawed.blog/ru/feed.xml" rel="self" type="application/atom+xml" /><link href="https://flawed.blog/ru/" rel="alternate" type="text/html" /><updated>2020-01-08T23:55:10+04:00</updated><id>https://flawed.blog/feed.xml</id><title type="html">flawed</title><subtitle>My personal blog about Unity, developing homebrew NES games, OpenGL and gamedev in general</subtitle><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><entry xml:lang="ru"><title type="html">Делаем Pong для NES (Неделя №1)</title><link href="https://flawed.blog/ru/gamedev/homebrew-pong-for-nes-week-1" rel="alternate" type="text/html" title="Делаем Pong для NES (Неделя №1)" /><published>2020-01-08T23:45:00+04:00</published><updated>2020-01-08T23:45:00+04:00</updated><id>https://flawed.blog/gamedev/making-pong-for-nes-week-1-ru</id><content type="html" xml:base="https://flawed.blog/gamedev/homebrew-pong-for-nes-week-1">&lt;div class=&quot;notice--warning&quot;&gt;
+  &lt;h4&gt; Имейте в виду: &lt;/h4&gt;
+  
+&lt;ul&gt;
+  &lt;li&gt;Всё что я делаю может быть совершенно неверным&lt;/li&gt;
+  &lt;li&gt;Это пост может содержать нецензурную речь&lt;/li&gt;
+  &lt;li&gt;Это не туториал. Скорее это просто подробное описание разработки этой игры&lt;/li&gt;
+  &lt;li&gt;В посте может быть миллион грамматических ошибок&lt;/li&gt;
+  &lt;li&gt;Не стесняйтесь сообщать мне об ошибках в комментариях или через соцсети/email&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+&lt;/div&gt;
 
-&lt;p&gt;Where &lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;highlighter-rouge&quot;&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;h1 id=&quot;почему&quot;&gt;Почему?&lt;/h1&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Docendo discimus&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;или если вы сегодня не собирались вызывать демонов:&lt;/p&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><summary type="html">приветствие на русском</summary></entry></feed>
+&lt;blockquote&gt;
+  &lt;p&gt;Уча, мы познаём&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Хотя, учить - это сильное слово, скорее я просто пытаюсь пояснить что я делаю, чаще всего себе же.&lt;/p&gt;
+
+&lt;h1 id=&quot;почему-nesfamicomденди&quot;&gt;Почему NES/Famicom/Денди?&lt;/h1&gt;
+
+&lt;p&gt;Я всегда хотел сделать игру для старого железа&lt;sup id=&quot;fnref:b41501cc&quot;&gt;&lt;a href=&quot;#fn:b41501cc&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Ограничить себя “легковесным” ассемблером, малым количеством ROM/RAM памяти и медленным CPU.
+Выжать все соки из этого железа. Быть увереным, что весь мой говнокод будет работать одинаково на всех юнитах.
+И для этого, Я выбрал &lt;strong&gt;NES&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Отложим выжимание сока в сторону и начнём с чего-то простого, например &lt;strong&gt;Pong&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;6502-ассемблер&quot;&gt;6502 ассемблер&lt;/h1&gt;
+
+&lt;p&gt;Ассемблер не так сложен, как можно было бы подумать, особенно 6502 ассемблер. Разработка под &lt;strong&gt;NES&lt;/strong&gt; тоже не выглядит слишком сложной задачей. Конечно, после использования 6502 ассемблера, ты будешь радоваться даже самому простому синтаксическому сахару. И всё же, это не слишком замарочено и точно не так скучно, раздражающе и положительно неудволительно как разработка на 1С.&lt;sup id=&quot;fnref:f6d4ec76&quot;&gt;&lt;a href=&quot;#fn:f6d4ec76&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Если вы ещё не знаете 6502 ассемблер, но всё же хотите понимать что тут происходит, пролистайте эту страницу &lt;a href=&quot;http://6502.org/tutorials/6502opcodes.html&quot;&gt;описание опкодов&lt;/a&gt; или можете найти туторилы в секции &lt;strong&gt;Ссылки&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Но основная идея такая:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Грузим какие-нибудь данные в один из трёх регистров (&lt;code class=&quot;highlighter-rouge&quot;&gt;LDA&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;LDX&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;LDY&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Делаем что-нибудь с этими данными (&lt;code class=&quot;highlighter-rouge&quot;&gt;INX&lt;/code&gt; - увеличиваем &lt;code class=&quot;highlighter-rouge&quot;&gt;X&lt;/code&gt; регистор на 1, например)&lt;/li&gt;
+  &lt;li&gt;Сохраняем результат где-нибудь (&lt;code class=&quot;highlighter-rouge&quot;&gt;STA&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;STX&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;STY&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;И потом ветвления, переносы между регистрами, сабрутины и прочая красота&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ну, или просто читайте этот пост ради развлечения, если вы думаете это того стоит.&lt;/p&gt;
+
+&lt;h1 id=&quot;инструменты&quot;&gt;Инструменты&lt;/h1&gt;
+
+&lt;p&gt;Я буду использовать &lt;strong&gt;Windows&lt;/strong&gt;, &lt;strong&gt;FCEUX&lt;/strong&gt; эмулятор, &lt;strong&gt;NESst&lt;/strong&gt; и &lt;strong&gt;nesasm3&lt;/strong&gt; ассемблер. Также, Я взял &lt;code class=&quot;highlighter-rouge&quot;&gt;nesdefs.asm&lt;/code&gt; и &lt;code class=&quot;highlighter-rouge&quot;&gt;nesppu.asm&lt;/code&gt; у &lt;a href=&quot;https://8bitworkshop.com/&quot;&gt;8bitworkshop&lt;/a&gt;&lt;sup id=&quot;fnref:f7f95d4a&quot;&gt;&lt;a href=&quot;#fn:f7f95d4a&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; и портировал их на &lt;strong&gt;nesasm&lt;/strong&gt;&lt;sup id=&quot;fnref:b82c9141&quot;&gt;&lt;a href=&quot;#fn:b82c9141&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. Эти файлы содержат множество полезных констант и макросов.&lt;/p&gt;
+
+&lt;h1 id=&quot;ines-заголовок&quot;&gt;iNES заголовок&lt;/h1&gt;
+
+&lt;p&gt;Каждый rom начинается с заголовка, в нашем случае iNES заголовка:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;inesprg&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; 1x 16KB PRG code&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;ineschr&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; 1x  8KB CHR data&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;inesmap&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; маппер 0 = NROM, без смены банков&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;inesmir&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; отзеркаливание задника&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;В итоге:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;1&lt;/em&gt; 16kb PRG ROM - наш код игры/движка&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;1&lt;/em&gt; 8kb chr rom - наша графика.&lt;/li&gt;
+  &lt;li&gt;Нет смены банков (32 kb PRG максимум)&lt;/li&gt;
+  &lt;li&gt;вертикальное отзеркаливание задника&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Для понга этой конфигурации более чем хватит.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Заголовок используется только эмуляторами (и скорее всего флеш катриджами).&lt;/p&gt;
+
+&lt;h1 id=&quot;переменные&quot;&gt;Переменные&lt;/h1&gt;
+
+&lt;p&gt;16 битная переменная для позиции левой ракетки выглядит так:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;paddle1PosLo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;rs&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; младший байт позиции левой ракетки&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;paddle1PosHi&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;rs&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; старший байт позиции левой ракетки&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Формат: &lt;code class=&quot;highlighter-rouge&quot;&gt;название_переменной&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;.rs&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;n байт&lt;/code&gt; &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.rs&lt;/code&gt; - резервирует n байт памяти для этой переменной.
+&lt;br /&gt;Мы можем обозначить позицию одной переменной используя &lt;strong&gt;.rs 2&lt;/strong&gt; и потом с помощью LOW и HIGH получать младший и старший байт соответственно.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Вообще, сейчас нам младший байт позиции и не нужен, так как мы ничего сейчас двигать не собираемся, но это пригодится в будующем.
+&lt;br /&gt;16 бит помогут нам добавить перемещению плавности. 16 бит позволяет учитывать сабпиксели в вычислениях, тогда как при 8 битах минимальное изменение переменной позиции/ускорения будет эквивалентно одному пикселю.
+&lt;br /&gt;Объясню подробнее в следующем посте.&lt;/p&gt;
+
+&lt;h1 id=&quot;прерывания&quot;&gt;Прерывания&lt;/h1&gt;
+
+&lt;p&gt;Прерывания - что-то вроде хардварных ивентов. Например, игрок жмёт ресет на консоли, и это вызывает CPU прерывание и счётчик команд перемещается к ресет вектору прерывания.&lt;/p&gt;
+
+&lt;p&gt;У NES 3 таких:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;NMI&lt;/strong&gt; ($FFFA-$FFFB) или Non-Maskable Interrupt - вызывается в конце каждого кадра (или в начале v-blank периода)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reset&lt;/strong&gt; ($FFFC-$FFFD) - вызывается каждый раз, когда игрок жмёт кнопку ресет (&lt;em&gt;ага&lt;/em&gt;) или при каждом старте программы&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;IRQ+BRK&lt;/strong&gt; ($FFFE-$FFFF) - что-то, в чём я пока не разбирался. Сейчас оно нам не нужно.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Мы объявляем векторы прерываний &lt;em&gt;вот так вот&lt;/em&gt;&lt;sup id=&quot;fnref:fbc428f7&quot;&gt;&lt;a href=&quot;#fn:fbc428f7&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;macro&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NES_VECTORS&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;org&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$fffa&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;; начинаем в $fffa&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;dw&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NMIHandler&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; $fffa vblank nmi&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;dw&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Reset&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;; $fffc reset&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;dw&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; $fffe irq / brk&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;ENDM&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;reset-прерывание&quot;&gt;&lt;strong&gt;Reset&lt;/strong&gt; прерывание&lt;/h1&gt;
+
+&lt;h2 id=&quot;инициализация&quot;&gt;Инициализация&lt;/h2&gt;
+
+&lt;p&gt;Сейчас нам нужно временно отключить PPU&lt;sup id=&quot;fnref:6157e0dc&quot;&gt;&lt;a href=&quot;#fn:6157e0dc&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;, прерывания и режим десятичных вычислений (NES CPU всё равно этот режим не поддерживает), устанавливаем указатель стека и много чего ещё.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;NES CPU (2A03) это урезанный 6502 CPU без режима десятичных вычислений, но имеет специальные привязанные к адрессам памяти регистрами для ввода/вывода, звука, PPU и т.д.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nf&quot;&gt;NES_INIT&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; устанавливаем указатель стека, вырубаем PPU&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; ждём VSYNC&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ClearRAM&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; чистим RAM&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; ждём VSYNC (и прогрева PPU)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NES_INIT&lt;/code&gt; это макро в &lt;code class=&quot;highlighter-rouge&quot;&gt;nesdefs.asm&lt;/code&gt; и его можно добавить в главный файл (&lt;code class=&quot;highlighter-rouge&quot;&gt;pong.asm&lt;/code&gt; В моём случае) написав &lt;code class=&quot;highlighter-rouge&quot;&gt;.include &quot;nesdefs.asm&quot;&lt;/code&gt; в начале файла.&lt;/p&gt;
+
+&lt;p&gt;Вот что &lt;code class=&quot;highlighter-rouge&quot;&gt;NES_INIT&lt;/code&gt; делает:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;macro&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NES_INIT&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sei&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;;отключаем прерывания&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;cld&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;;отключаем режим десятичных вычислений&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;ldx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$ff&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;txs&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;;устанавливаем указатель стека&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;;увеличиваем X до 0 (FF переполняется в 0)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;stx&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_MASK&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;вырубаем отрисовку&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;stx&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DMC_FREQ&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;вырубаем DMC прерывания&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;stx&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_CTRL&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;вырубаем NMI прерывания&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;bit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_STATUS&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;обнуляем VBL флаг&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;bit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;APU_CHAN_CTRL&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; так и не понял что мы тут делаем&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$40&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;APU_FRAME&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;вырубаем APU Frame прерывание&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$0F&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;APU_CHAN_CTRL&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;вырубаем DMC прерывание, врубаем другие каналы.&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;VSYNC&lt;/strong&gt;. Смотрим, если 7ой бит (самый старший который или же первый если считать слева-направо) &lt;code class=&quot;highlighter-rouge&quot;&gt;PPU_STATUS&lt;/code&gt; ($2002) равен одному.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;WaitSync:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_STATUS&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; тригерит минусовой CPU флаг&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bpl&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;rts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Clear RAM&lt;/strong&gt;. Необходимый шаг, так как мы не знаем какие данные находятся в RAM когда срабатывает Reset прерывание.
+Поэтому мы всегда должны полагать, что RAM при перезагрузке может содержать мусор, а не все 0, как можно было бы подумать.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;ClearRAM:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; A = 0&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;tax&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; X = 0&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;clearRAM&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; чистим $0-$ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;cpx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$fe&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; последние 2 байта стека?&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bcs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;skipStack&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; не чистим&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; чистим $100-$1fd&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;skipStack&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; чистим $200-$2ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; чистим $300-$3ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; чистим $400-$4ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; чистим $500-$5ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$600&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; чистим $600-$6ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; чистим $700-$7ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; X = X + 1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;clearRAM&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; и так 256 раз&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;rts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;И ещё один &lt;strong&gt;VSYNC&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;палитра&quot;&gt;Палитра&lt;/h2&gt;
+
+&lt;p&gt;Теперь мы должны сообщить где используемая палитра будет храниться ($3F00).&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$3f&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; $3F -&amp;gt; A регистр&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldy&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; $00 -&amp;gt; Y регистр&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_ADDR&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; сначала записываем старший байт&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sty&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_ADDR&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; и младший $3F00 -&amp;gt; PPU адресс&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;В &lt;strong&gt;NES_INIT&lt;/strong&gt; макросе мы отключили NMI и отрисовку, теперь, после инициализации палитры, пришло время включить их.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#CTRL_NMI&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_CTRL&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; включаем NMI&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#MASK_COLOR&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_MASK&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; включаем отрисовку&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;PPU_CTRL биты:
+&lt;img src=&quot;/assets/images/PPU_CTRL_ru.PNG&quot; alt=&quot;ppu_ctrl&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;PPU_MASK биты:
+&lt;img src=&quot;/assets/images/PPU_MASK_ru.PNG&quot; alt=&quot;ppu_mask&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Вы можете предвартильно посмотреть как будет выглядеть чёрно-белый вариант и цветовый акценты с вашей палитрой и спрайтами в NESst
+&lt;img src=&quot;/assets/images/nesST_colorEmphasis.png&quot; alt=&quot;nesST&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Добавить палитру можно так:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;Pallete:&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;incbin&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;palette.pal&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;palette.pal&lt;/code&gt; это простой бинарник без заголовка и прочего, который содержим эти данные: &lt;br /&gt;
+$0f,$00,$28,$30,$0f,$01,$21,$31,$0f,$06,$16,$26,$0f,$09,$19,$29,
+$0f,$00,$28,$30,$0f,$01,$21,$31,$0f,$06,$16,$26,$0f,$09,$19,$29&lt;/p&gt;
+
+&lt;p&gt;или можно добавить эти hex значения простыми текстом:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;Palette:&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$28&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$06&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$09&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$29&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;;задники&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$28&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$06&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$09&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$29&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;;спрайты&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Эти числа соответсвуют цветам из внутренней NES палитры: &lt;sup id=&quot;fnref:27e518f9&quot;&gt;&lt;a href=&quot;#fn:27e518f9&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Savtool-swatches.png&quot; alt=&quot;NES palette&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;1 набор из 4 палитр для задников и 1 набор для спрайтов.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;В NESst вы можете ткнуть “Palettes” -&amp;gt; “Put to the clipboard” -&amp;gt; “ASM data” чтобы скопировать палитру. Будьте вниматльны, это копирует только 1 набор (16 цветов) за раз.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Загрузка палитр&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;LoadPalettes:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_STATUS&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; читаем PPU статус чтобы сбросить #HIGH/#LOW&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$3F&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_ADDR&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; пишем старший байт $3F00 адресса&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_ADDR&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; а теперь младший байт $3F00 адресса&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; начинаем с нуля&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;LoadPalettesLoop:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Palette&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; грузим данные из адресса (Palette + x)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_DATA&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;; пишем в PPU_DATA&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;                   &lt;span class=&quot;c1&quot;&gt;; x += 1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;cpx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$20&lt;/span&gt;              &lt;span class=&quot;c1&quot;&gt;; Сверяем X с шестнадцатеричным $20, десятичным 32 (палитры задников и спрайтов (4*4) * 2)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bne&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LoadPalettesLoop&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; Если не равно, то уходим в луп LoadPalettesLoop&lt;/span&gt;
+                        &lt;span class=&quot;c1&quot;&gt;; иначе идём дальше&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Весь этот код просто копирует палитры в $3f00.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Помните, как мы сообщали NES где мы будем хранить палитру? Да, это был $3f00&lt;/p&gt;
+
+&lt;h2 id=&quot;спрайты&quot;&gt;Спрайты&lt;/h2&gt;
+
+&lt;p&gt;Вот первая страница (левая сторона) моего chr rom:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/pongTileset1.bmp&quot; alt=&quot;128x128 tileset&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Загрузка спрайтов&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_ADDR&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; устанавливаем младший байт (00) OAM RAM адресса&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$02&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_DMA&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; устанавливаем старший байт (02) OAM RAM адресса, начинаем DMA перенос&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Пишем &lt;code class=&quot;highlighter-rouge&quot;&gt;$0200&lt;/code&gt; в OAM RAM адресс.&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$0200&lt;/code&gt;-&lt;code class=&quot;highlighter-rouge&quot;&gt;$02FF&lt;/code&gt; теперь содержит копию OAM (64 записи из 4 байт каждая).&lt;/p&gt;
+
+&lt;p&gt;Этот макрос упростит загрузку спрайтов:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;graphics.asm&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; \1 спрайты со смещением \2 смещение \3 количество спрайтов&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;LoadSprites&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;macro&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;LoadSpritesLoop&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\@&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;\1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_RAM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;cpx&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;\3&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bne&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LoadSpritesLoop&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\@&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\@&lt;/code&gt; - специальный параметр, который возвращает разные числа для каждого макроса. &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\1-\3&lt;/code&gt; - входные параметры.&lt;/p&gt;
+
+&lt;p&gt;В C это бы выглядело бы как-то так:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LoadSprites&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;byte&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sprites&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;byte&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;byte&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spritesCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Итак, мы грузим наш метаспрайт (&lt;code class=&quot;highlighter-rouge&quot;&gt;спрайты&lt;/code&gt;) в OAM_RAM со &lt;code class=&quot;highlighter-rouge&quot;&gt;смещением&lt;/code&gt;
+пока X не равен длинне метаспрайта (&lt;code class=&quot;highlighter-rouge&quot;&gt;количество спрайтов&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Вызываем макрос так:&lt;/p&gt;
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nf&quot;&gt;LoadSprites&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MiddlePadle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--warning&quot;&gt;Кстати, Я только сейчас заметил, что называю метаспрайт ракетки - “MiddlePadle”. Не обращайте особого внимания, Я хотел сделать 3 разных размера ракеток в качестве паур-апов, так что…
+&lt;br /&gt;Может сделаем&lt;/p&gt;
+
+&lt;p&gt;Вот как MiddlePaddle метаспрайт выглядит:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;MiddlePadle:&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;$03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;$04&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$04&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$02&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Просто напоминание. &lt;br /&gt;
+Чтобы указать систему счисления, перед числом нужно добавить:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt; - двоичное число&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt; - шестнадцатеричное&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;no prefix&lt;/code&gt; - десятичное.&lt;/p&gt;
+
+&lt;p&gt;Давайте рассмотрим первый ряд метаспрайта:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;;vert sprite attr horiz&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Первый байт - это &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; координата экрана.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Второй байт - индекс спрайта. В нашем pong.chr файле $03 соответсвует этому спрайту.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/paddle1.PNG&quot; alt=&quot;paddle_graphics&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Третий байт - атрибуты &lt;sup id=&quot;fnref:8f138dca&quot;&gt;&lt;a href=&quot;#fn:8f138dca&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/attributeBits_ru.PNG&quot; alt=&quot;attribute bits&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Два младших бита - номер палитры. 00 - первый набор палитры, 01 - второй, 10 - третий, 11 - четвёртый. В общем, 0-3 в двоичном представлении. Довольно просто.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Четвёртый байт - &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; координата экрана.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;В нашем случае и &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; и &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; экранные координаты не абсолютные, а относительные. То есть, &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; не &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; позиция, а смещение &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; координаты. &lt;strong&gt;Мы смещаем каждый спрайт на &lt;code class=&quot;highlighter-rouge&quot;&gt;8&lt;/code&gt; (десятичное число), так как каждый спрайт 8x8 пикселей.&lt;/strong&gt;&lt;sup id=&quot;fnref:dd593263&quot;&gt;&lt;a href=&quot;#fn:dd593263&quot; class=&quot;footnote&quot;&gt;9&lt;/a&gt;&lt;/sup&gt;
+У нас есть две ракетки (левая и правая, да), поэтому использовать смещения будет хорошей идеей, ведь мы сможем использовать один и тот же метаспрайт для обеих ракеток.&lt;/p&gt;
+
+&lt;p&gt;Инициализируем переменные. &lt;code class=&quot;highlighter-rouge&quot;&gt;$80&lt;/code&gt; - середина экрана.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$80&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;paddle1PosHi&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;paddle1PosLo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Теперь, всё что остаётся - это ждать NMI прерывания.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;endless&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jmp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;endless&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; бесконечный цикл&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;nmi&quot;&gt;&lt;strong&gt;NMI&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;подготовка-ppu&quot;&gt;Подготовка PPU&lt;/h2&gt;
+
+&lt;p&gt;Следующий шаг - подготовка PPU для рендера следующего кадра.
+И так как OAM RAM реализован через динамическую RAM, контент RAM быстро превращает в мусор, поэтому нужно обновлять содержание OAM каждый кадр.&lt;sup id=&quot;fnref:8f138dca:1&quot;&gt;&lt;a href=&quot;#fn:8f138dca&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Также теперь мы может включить отображение спрайтов, записав единицу в 4ый старший бит в PPU_MASK.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_ADDR&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; устанавливаем младший байт (00) OAM RAM адресса&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$02&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_DMA&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; устанавливаем старший байт (02) OAM RAM адресса, начинаем DMA перенорс&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mb&quot;&gt;#%10000000&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; включаем NMI&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_CTRL&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mb&quot;&gt;#%00010000&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; включаем отображение спрайтов&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_MASK&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;;; сообщаем PPU, что задники у нас пока не скролятся&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$2005&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$2005&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;обновление-позиции&quot;&gt;Обновление позиции&lt;/h2&gt;
+
+&lt;p&gt;Теперь нам осталось только обновить позицию ракетки и нарисовать её метаспрайт в этой новой позиции.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Пока мы на самом деле ничего не перемещаем, но этот макрос будет очень полезен позже&lt;/p&gt;
+
+&lt;p&gt;Следующий макрос просто добавляет текущую позицию ракетки к смещение метаспрайта.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;transform.asm&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; \1 posYHi \2 posXHi \3 offset&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;UpdatePos&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;macro&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$03&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldy&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;nf&quot;&gt;UpdatePosLoop&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\@&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;\1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;clc&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;adc&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MiddlePadle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; добавляем старший байт текущей Y позиции к Y смещению (первый байт каждой строки OAM ROM ракетки)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_RAM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; храним получившуюся позицию Y в OAM RAM со смещением&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;\2&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; позиции X - константа&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_RAM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;iny&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;iny&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;iny&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;iny&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;cpy&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$10&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; можете оставить константой или добавить 4ым аргументом&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bne&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UpdatePosLoop&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\@&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Вызываем так:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nf&quot;&gt;UpdatePos&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;paddle1PosHi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$0C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Вы навреное заметили 4 &lt;code class=&quot;highlighter-rouge&quot;&gt;inx&lt;/code&gt; и &lt;code class=&quot;highlighter-rouge&quot;&gt;iny&lt;/code&gt; инструкции подряд и подумали, что это выглядит тупо. Ну, в общем-то да, но на самом деле это не так тупо, если подумать об этом.
+Вместо 4ёх &lt;code class=&quot;highlighter-rouge&quot;&gt;inx&lt;/code&gt;, вы могли бы написать так:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+  &lt;span class=&quot;k&quot;&gt;txa&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; 2 cycles&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;clc&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; 2 cycles&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;adc&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; 2 cycles&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;tax&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; 2 cycles&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;4 инструкции, 8 циклов. Тоже самое, что написать &lt;code class=&quot;highlighter-rouge&quot;&gt;inx&lt;/code&gt; 4 раза. Видите? Это не тупо, может быть лениво, но не тупо.&lt;/p&gt;
+
+&lt;h2 id=&quot;метаспрайты&quot;&gt;Метаспрайты&lt;/h2&gt;
+
+&lt;p&gt;Давайте снова посмотим на OAM ROM нашей ракетки:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;MiddlePadle:&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;$03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;$04&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$04&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$02&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Каждый спрайт размером 8x8 пикселей. Марио, например, чуть больше этого. Особенно большой Марио.
+Чтобы сформировать метаспрайт большого Марио, нужно собрать его из нескольких спрайтов.&lt;br /&gt;
+Взгляньте на эту гифку:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/marioMetasprite.gif&quot; alt=&quot;Mario's metasprite&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;И так же с нашей ракеткой. Обратите особое внимание на &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; и &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; смещения, индекс спрайтов и атрибуты.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/pongMetasprite.gif&quot; alt=&quot;paddle's metasprite&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;И не забудьте добавить опкод возвращения из прерывания (&lt;code class=&quot;highlighter-rouge&quot;&gt;RTI&lt;/code&gt;) в конце.&lt;/p&gt;
+
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;a href=&quot;https://8bitworkshop.com/&quot;&gt;8bitworkshop&lt;/a&gt; использует SAVE_REGS и RESTORE_REGS в начале и конце NMI соответственно. Честно говоря, я не знаю зачем.
+Этот макрос записывает регистры в стек (SAVE) и достаёт регистры из стека (RESTORE). Вы можете найти код макроса в &lt;code class=&quot;highlighter-rouge&quot;&gt;nesdefs.asm&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;распределение-памяти&quot;&gt;Распределение памяти&lt;/h1&gt;
+
+&lt;p&gt;Пару слов о распределении памяти нашего понга.&lt;/p&gt;
+
+&lt;p&gt;В iNES загловке мы объявили 1 prg rom (2 банка, каждый по 8 kb, в общем 16kb) и 1 chr rom (1 банк, в общем  8 kb).
+Вы наверное уже заметили, каждый банк ровно 8 kb.&lt;/p&gt;
+
+&lt;p&gt;К PRG можно достучаться через адресса CPU &lt;code class=&quot;highlighter-rouge&quot;&gt;$8000 - $FFF9&lt;/code&gt;.
+Взгляните на изображение от &lt;strong&gt;BunnyBoy&lt;/strong&gt;:
+&lt;img src=&quot;/assets/images/cpumemmap.png&quot; alt=&quot;cpu memory map&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Итак, мы располагаем PRG rom в первых 32 kb, зарезервированных под rom картриджа - первый банк в &lt;code class=&quot;highlighter-rouge&quot;&gt;$8000&lt;/code&gt;, второй в &lt;code class=&quot;highlighter-rouge&quot;&gt;$A000&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Если вам нужно больше, чем 32kb PRG, придётся использовать маппер&lt;/p&gt;
+
+&lt;p&gt;CHR rom подключен к PPU и копия chr rom’а находится в диапозоне &lt;code class=&quot;highlighter-rouge&quot;&gt;$0000-$2000&lt;/code&gt;.
+&lt;br /&gt;И да, это третья банка.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;В первом банке мы храним &lt;code class=&quot;highlighter-rouge&quot;&gt;Reset&lt;/code&gt; и &lt;code class=&quot;highlighter-rouge&quot;&gt;NMI&lt;/code&gt; код&lt;/li&gt;
+  &lt;li&gt;Во втором банке - палитра и pattern tables (наш MiddlePaddle OAM ROM)&lt;/li&gt;
+  &lt;li&gt;В третьем - наш pong.chr&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;В коде это выглядит так:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;bank&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;org&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$8000&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;первые 8 kb prg&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;Reset:&lt;/span&gt;
+  &lt;span class=&quot;nf&quot;&gt;NES_INIT&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; устанавливаем указатель стека, вырубаем PPU&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; ждём VSYNC&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ClearRAM&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; чистим RAM&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; ждём VSYNC (и прогрева PPU)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Особо не переживайте, если ничего не понятно. Мы расмотрим маппинг и мапперы позже. Наверное. Может быть.&lt;/p&gt;
+
+&lt;h1 id=&quot;результаты&quot;&gt;Результаты&lt;/h1&gt;
+
+&lt;p&gt;И после крови, боли и пота, если луна в правильном цикле и вы хорошо себя вели весь год, вы увидете&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Барабанная дробь&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/pong-1.png&quot; alt=&quot;hey, it's pong&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Куча работы, чтобы отобразить 32x8 метаспрайт на пустом 256x224 экране. Не знаю как вы, а я максимально доволен.&lt;/p&gt;
+
+&lt;h1 id=&quot;ссылки&quot;&gt;Ссылки&lt;/h1&gt;
+
+&lt;p&gt;Исходники можно найти тут: &lt;a href=&quot;https://github.com/ShyDev/PongForNES&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Ссылки по теме:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Благодаря &lt;a href=&quot;https://twitter.com/cppchriscpp&quot;&gt;@cppchriscpp&lt;/a&gt; у нас теперь есть зеркало серии туториалов &lt;a href=&quot;http://nerdy-nights.nes.science/&quot;&gt;Nerdy Nights&lt;/a&gt;. Категорически рекомендую. [eng]&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://8bitworkshop.com/&quot;&gt;8bitworkshop&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Волшебная серия ютуб роликов про 6502 от &lt;a href=&quot;https://www.youtube.com/watch?v=LnzuMJLZRdU&quot;&gt;Ben Eater&lt;/a&gt; [eng]&lt;/li&gt;
+  &lt;li&gt;Куча полезной информации о 6502 &lt;a href=&quot;http://6502.org/&quot;&gt;6502.org&lt;/a&gt; [eng]&lt;/li&gt;
+  &lt;li&gt;Куча полезной информации о NES &lt;a href=&quot;http://nesdev.com/&quot;&gt;nesdev&lt;/a&gt; [eng]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:b41501cc&quot;&gt;
+      &lt;p&gt;Всё таки фамикому уже 36 лет. Охренеть &lt;a href=&quot;#fnref:b41501cc&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:f6d4ec76&quot;&gt;
+      &lt;p&gt;Расслабьтесь, 1С разаботчики, всё хорошо &lt;a href=&quot;#fnref:f6d4ec76&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:f7f95d4a&quot;&gt;
+      &lt;p&gt;Кстати, отличная онлайн IDE’шка для 6502 ассемблера/cc65 с кучей эмуляторов разных 8-ми битных платформ. Тонна разных полезных тулзов, подсветка синтаксиса и прочее. Гляньте, если у вас нормальное отношение к онлайн IDE &lt;a href=&quot;#fnref:f7f95d4a&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:b82c9141&quot;&gt;
+      &lt;p&gt;Я портировал только часть кода, который собираюсь использовать в данном проекте &lt;a href=&quot;#fnref:b82c9141&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:fbc428f7&quot;&gt;
+      &lt;p&gt;извините &lt;a href=&quot;#fnref:fbc428f7&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:6157e0dc&quot;&gt;
+      &lt;p&gt;PPU or Picture Processing Unit - rtx2080 в мире 8 битных спрайтов, хотя на самом деле ближе к adreno, так как это видеочип &lt;a href=&quot;#fnref:6157e0dc&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:27e518f9&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://wiki.nesdev.com/w/index.php/PPU_palettes&quot;&gt;PPU palettes (nesdev’s wiki)&lt;/a&gt; &lt;a href=&quot;#fnref:27e518f9&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:8f138dca&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://wiki.nesdev.com/w/index.php/PPU_OAM&quot;&gt;PPU OAM (nesdev’s wiki)&lt;/a&gt; &lt;a href=&quot;#fnref:8f138dca&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt; &lt;a href=&quot;#fnref:8f138dca:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:dd593263&quot;&gt;
+      &lt;p&gt;На 8, не сглупите так же как сглупил я. Если вы сместите &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; и/или &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; только на 1, у вас будет куча проблем, в том числе проблем с приоритетами спрайтов. Я знаю, что это всё звучит очевидно, но я умудрился проглядеть этот момент &lt;a href=&quot;#fnref:dd593263&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><category term="NES" /><category term="6502" /><summary type="html">Делаем Pong для NES (Денди). Неделя 1. Показываем спрайты на экране эмулятора</summary></entry></feed>

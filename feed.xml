@@ -1,17 +1,561 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://flawed.blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://flawed.blog/" rel="alternate" type="text/html" /><updated>2019-12-10T20:33:15+04:00</updated><id>https://flawed.blog/feed.xml</id><title type="html">flawed</title><subtitle>My personal blog about Unity, developing homebrew NES games, OpenGL and gamedev in general</subtitle><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><entry xml:lang="en"><title type="html">Test</title><link href="https://flawed.blog/test/" rel="alternate" type="text/html" title="Test" /><published>2019-12-01T15:48:12+04:00</published><updated>2019-12-01T15:48:12+04:00</updated><id>https://flawed.blog/test</id><content type="html" xml:base="https://flawed.blog/test/">&lt;p&gt;test&lt;/p&gt;</content><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><summary type="html">test</summary></entry><entry xml:lang="en"><title type="html">Welcome to Jekyll!</title><link href="https://flawed.blog/welcome/" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2019-12-01T15:44:12+04:00</published><updated>2019-12-01T15:44:12+04:00</updated><id>https://flawed.blog/welcome-to-jekyll</id><content type="html" xml:base="https://flawed.blog/welcome/">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://flawed.blog/feed.xml" rel="self" type="application/atom+xml" /><link href="https://flawed.blog/" rel="alternate" type="text/html" /><updated>2020-01-08T23:55:10+04:00</updated><id>https://flawed.blog/feed.xml</id><title type="html">flawed</title><subtitle>My personal blog about Unity, developing homebrew NES games, OpenGL and gamedev in general</subtitle><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><entry xml:lang="en"><title type="html">Making Pong for NES (Week 1)</title><link href="https://flawed.blog/gamedev/homebrew-pong-for-nes-week-1" rel="alternate" type="text/html" title="Making Pong for NES (Week 1)" /><published>2020-01-08T23:45:00+04:00</published><updated>2020-01-08T23:45:00+04:00</updated><id>https://flawed.blog/gamedev/making-pong-for-nes-week-1</id><content type="html" xml:base="https://flawed.blog/gamedev/homebrew-pong-for-nes-week-1">&lt;div class=&quot;notice--warning&quot;&gt;
+  &lt;h4&gt; Bear in mind: &lt;/h4&gt;
+  
+&lt;ul&gt;
+  &lt;li&gt;All I do may be completely and utterly wrong&lt;/li&gt;
+  &lt;li&gt;This post may contain strong language&lt;/li&gt;
+  &lt;li&gt;It’s not a tutorial. It’s just a documentation of my journey building this game with thorough explanation of what’s going on&lt;/li&gt;
+  &lt;li&gt;My english sucks, so be ready for poorly worded sentences, mistakes and misunderstandings&lt;/li&gt;
+  &lt;li&gt;By the way, don’t hesitate to tell me about my mistakes in the comments or through social media/email&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Jekyll requires blog post files to be named according to the following format:&lt;/p&gt;
+&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR-MONTH-DAY-title.MARKUP&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;why&quot;&gt;Why?&lt;/h1&gt;
 
-&lt;p&gt;Where &lt;code class=&quot;highlighter-rouge&quot;&gt;YEAR&lt;/code&gt; is a four-digit number, &lt;code class=&quot;highlighter-rouge&quot;&gt;MONTH&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;DAY&lt;/code&gt; are both two-digit numbers, and &lt;code class=&quot;highlighter-rouge&quot;&gt;MARKUP&lt;/code&gt; is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Docendo discimus&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+&lt;p&gt;or, if you’re not into summoning a demon much:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;By teaching, we learn&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Check out the &lt;a href=&quot;https://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
+&lt;p&gt;Well, teaching is a strong word, more like trying to explain what the hell I’m doing, mostly to myself.
+And practicing english is good enough excuse to spend a week writing this.&lt;/p&gt;
+
+&lt;h1 id=&quot;why-nesfamicomdendy&quot;&gt;Why NES/Famicom/Dendy?&lt;/h1&gt;
+
+&lt;p&gt;I’ve always wanted to make a game for an old hardware&lt;sup id=&quot;fnref:9e2cc8af&quot;&gt;&lt;a href=&quot;#fn:9e2cc8af&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;. Limit myself with a lightweight assembler, very small RAM/ROM and slow CPU.
+Squeeze all the juice this hardware has. Being sure it’s gonna run all my smelly code exactly the way I intended with same performance on every unit.
+And for all that, I chose &lt;strong&gt;NES&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;Juice squeezing aside, let’s start with something simple, like &lt;strong&gt;Pong&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;6502-assembler&quot;&gt;6502 assembler&lt;/h1&gt;
+
+&lt;p&gt;Assembler is not as hard as you might think, especially 6502’s. Developing for &lt;strong&gt;NES&lt;/strong&gt; doesn’t seem too difficult too. Sure, after writing 6502 assembly code, you really appreciate even simplest syntactic sugar. And still, it’s not too complicated and definitely not as frustrating, annoying and unsatisfying as coding for Android&lt;sup id=&quot;fnref:f6d4ec76&quot;&gt;&lt;a href=&quot;#fn:f6d4ec76&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; or setting up C++ project.&lt;/p&gt;
+
+&lt;p&gt;If you don’t know 6502 assembler, but still want to follow, check out this page for &lt;a href=&quot;http://6502.org/tutorials/6502opcodes.html&quot;&gt;opcode descriptions&lt;/a&gt; or you can find some tutorials in &lt;strong&gt;Links&lt;/strong&gt; section below.&lt;/p&gt;
+
+&lt;p&gt;But basic idea:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;You load some value in one of three registers (&lt;code class=&quot;highlighter-rouge&quot;&gt;LDA&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;LDX&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;LDY&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;You manipulate this data (&lt;code class=&quot;highlighter-rouge&quot;&gt;INX&lt;/code&gt; - increment &lt;code class=&quot;highlighter-rouge&quot;&gt;X&lt;/code&gt; register by one, for example)&lt;/li&gt;
+  &lt;li&gt;You store resulting data (&lt;code class=&quot;highlighter-rouge&quot;&gt;STA&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;STX&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;STY&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;And then branching, transfer between registers, subroutines and all that fun stuff&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Or you can just read this post purely for it’s entertainment value, if you think it has one.&lt;/p&gt;
+
+&lt;h1 id=&quot;tools&quot;&gt;Tools&lt;/h1&gt;
+
+&lt;p&gt;I’m going to use &lt;strong&gt;Windows&lt;/strong&gt;, &lt;strong&gt;FCEUX&lt;/strong&gt; emulator, &lt;strong&gt;NESst&lt;/strong&gt; and &lt;strong&gt;nesasm3&lt;/strong&gt; assembler. Also, I grabbed &lt;code class=&quot;highlighter-rouge&quot;&gt;nesdefs.asm&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;nesppu.asm&lt;/code&gt; from &lt;a href=&quot;https://8bitworkshop.com/&quot;&gt;8bitworkshop&lt;/a&gt;&lt;sup id=&quot;fnref:f7f95d4a&quot;&gt;&lt;a href=&quot;#fn:f7f95d4a&quot; class=&quot;footnote&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; and ported it to &lt;strong&gt;nesasm&lt;/strong&gt;&lt;sup id=&quot;fnref:b82c9141&quot;&gt;&lt;a href=&quot;#fn:b82c9141&quot; class=&quot;footnote&quot;&gt;4&lt;/a&gt;&lt;/sup&gt;. This 2 files contains many useful constants and macros.&lt;/p&gt;
+
+&lt;h1 id=&quot;ines-header&quot;&gt;iNES Header&lt;/h1&gt;
+
+&lt;p&gt;Every rom starts with a header, iNES header in our case:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;inesprg&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; 1x 16KB PRG code&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;ineschr&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; 1x  8KB CHR data&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;inesmap&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; mapper 0 = NROM, no bank swapping&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;inesmir&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; background mirroring&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So, here we have:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;1&lt;/em&gt; 16kb PRG ROM - basically our game/engine code&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;1&lt;/em&gt; 8kb chr rom - our graphics data.&lt;/li&gt;
+  &lt;li&gt;No bank switching  (32 kb PRG max)&lt;/li&gt;
+  &lt;li&gt;vertical background mirroring&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;For pong this configuration should be plenty.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Header is not really part of the rom and only used by emulators (and probably flash catridges).&lt;/p&gt;
+
+&lt;h1 id=&quot;variables&quot;&gt;Variables&lt;/h1&gt;
+
+&lt;p&gt;16 bit variable for left paddle position looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;paddle1PosLo&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;rs&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; low byte of the left paddle's position&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;paddle1PosHi&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;rs&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; high byte of the left paddle's position&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Format: &lt;code class=&quot;highlighter-rouge&quot;&gt;variable_name&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;.rs&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;n bytes&lt;/code&gt; &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.rs&lt;/code&gt; - reserves n bytes of memory for this variable.
+&lt;br /&gt;We can declare it as 1 variable with &lt;strong&gt;.rs 2&lt;/strong&gt; and then use LOW and HIGH syntax to access low and high byte.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;We don’t really need low byte of the paddle’s position at this point, but we’re definitely gonna need it later for 16 bit movement calculations.
+&lt;br /&gt;16 bit calculation will help us achieve smooth and nice motion.&lt;/p&gt;
+
+&lt;h1 id=&quot;interrupts&quot;&gt;Interrupts&lt;/h1&gt;
+
+&lt;p&gt;Interrupts are something like hardware events. For example, user hits reset button, that triggers CPU interrupt and program counter jumps to your interrupt vector.&lt;/p&gt;
+
+&lt;p&gt;NES has 3 of those:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;NMI&lt;/strong&gt; ($FFFA-$FFFB) or Non-Maskable Interrupt - called at the end of each frame (or at the start of vertical blanking)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Reset&lt;/strong&gt; ($FFFC-$FFFD) - called each time reset button is pressed (&lt;em&gt;dah&lt;/em&gt;) or each time the program is started&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;IRQ+BRK&lt;/strong&gt; ($FFFE-$FFFF) - something we don’t need right now and I don’t honestly know exactly what it does at the moment. Don’t forget, my prior experience is a couple of weeks screwing around with emulator
+and reading some articles.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We declare interrupt vectors like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;macro&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NES_VECTORS&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;org&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$fffa&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;; start at address $fffa&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;dw&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NMIHandler&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; $fffa vblank nmi&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;dw&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Reset&lt;/span&gt;		&lt;span class=&quot;c1&quot;&gt;; $fffc reset&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;dw&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; $fffe irq / brk&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;ENDM&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;reset-interrupt&quot;&gt;&lt;strong&gt;Reset&lt;/strong&gt; interrupt&lt;/h1&gt;
+
+&lt;h2 id=&quot;initilization&quot;&gt;Initilization&lt;/h2&gt;
+
+&lt;p&gt;At this stage we need to disable PPU&lt;sup id=&quot;fnref:6157e0dc&quot;&gt;&lt;a href=&quot;#fn:6157e0dc&quot; class=&quot;footnote&quot;&gt;5&lt;/a&gt;&lt;/sup&gt;, interrupts and decimal mode (NES CPU doesn’t support it anyway), set up stack pointer and more.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;NES CPU (2A03) is a stripped down 6502 CPU, it lacks decimal mode, but has specific memory-mapped registers for I/O, sound, PPU, etc&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nf&quot;&gt;NES_INIT&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; set up stack pointer, turn off PPU&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; wait for VSYNC&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ClearRAM&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; clear RAM&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; wait for VSYNC (and PPU warmup)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;NES_INIT&lt;/code&gt; is a macro located in the &lt;code class=&quot;highlighter-rouge&quot;&gt;nesdefs.asm&lt;/code&gt; file and can be included in the main file (&lt;code class=&quot;highlighter-rouge&quot;&gt;pong.asm&lt;/code&gt; in my case) by writing &lt;code class=&quot;highlighter-rouge&quot;&gt;.include &quot;nesdefs.asm&quot;&lt;/code&gt; at the start.&lt;/p&gt;
+
+&lt;p&gt;Here is what &lt;code class=&quot;highlighter-rouge&quot;&gt;NES_INIT&lt;/code&gt; actually does:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;macro&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;NES_INIT&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sei&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;;disable IRQs&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;cld&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;;decimal mode not supported&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;ldx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$ff&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;txs&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;;set up stack pointer&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;;increment X to 0&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;stx&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_MASK&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;disable rendering&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;stx&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;DMC_FREQ&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;disable DMC interrupts&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;stx&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_CTRL&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;disable NMI interrupts&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;bit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_STATUS&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;clear VBL flag&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;bit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;APU_CHAN_CTRL&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;ack DMC IRQ bit 7 ; what?&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$40&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;APU_FRAME&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;disable APU Frame IRQ&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$0F&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;APU_CHAN_CTRL&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;disable DMC, enable/init other channels.&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;VSYNC&lt;/strong&gt;. We’re just checking if highest bit (bit 7) of &lt;code class=&quot;highlighter-rouge&quot;&gt;PPU_STATUS&lt;/code&gt; ($2002) is 1.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;WaitSync:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bit&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_STATUS&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; triggers Negative CPU flag&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bpl&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;rts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Clear RAM&lt;/strong&gt;. This is necessary, because we can not be sure what’s in the ram when reset interrupt is triggered.
+So we should always assume, that the content of the ram at reset is unusable garbage and may not be all 0’s as you might be expected.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;ClearRAM:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#0&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; A = 0&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;tax&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; X = 0&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;clearRAM&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; clear $0-$ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;cpx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$fe&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; last 2 bytes of stack?&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bcs&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;skipStack&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; don't clear it&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; clear $100-$1fd&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;skipStack&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$200&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; clear $200-$2ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; clear $300-$3ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; clear $400-$4ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; clear $500-$5ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$600&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; clear $600-$6ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$700&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; clear $700-$7ff&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; X = X + 1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bne&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;clearRAM&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; loop 256 times&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;rts&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And another &lt;strong&gt;VSYNC&lt;/strong&gt; for a good measure.&lt;/p&gt;
+
+&lt;h2 id=&quot;palettes&quot;&gt;Palettes&lt;/h2&gt;
+
+&lt;p&gt;Next we need to tell NES where palette information is gonna be stored ($3F00).&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$3f&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; $3F -&amp;gt; A register&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldy&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; $00 -&amp;gt; Y register&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_ADDR&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; write #HIGH byte first&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sty&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_ADDR&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; $3F00 -&amp;gt; PPU address&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In &lt;strong&gt;NES_INIT&lt;/strong&gt; macro we disabled NMI and rendering, now, after we initialized palettes, it’s time to re-enable it.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#CTRL_NMI&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_CTRL&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; enable NMI&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;#MASK_COLOR&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_MASK&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; enable rendering&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;PPU_CTRL bits:
+&lt;img src=&quot;/assets/images/PPU_CTRL.PNG&quot; alt=&quot;ppu_ctrl&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;PPU_MASK bits:
+&lt;img src=&quot;/assets/images/PPU_MASK.PNG&quot; alt=&quot;ppu_mask&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;You can preview what grayscale and color emphasis would look like with your palette and sprites in NESst
+&lt;img src=&quot;/assets/images/nesST_colorEmphasis.png&quot; alt=&quot;nesST&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can include palettes as a binary file:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;Pallete:&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;incbin&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;palette.pal&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;palette.pal&lt;/code&gt; is a simple binary file with no header or anything and contains palettes data: &lt;br /&gt;
+$0f,$00,$28,$30,$0f,$01,$21,$31,$0f,$06,$16,$26,$0f,$09,$19,$29,
+$0f,$00,$28,$30,$0f,$01,$21,$31,$0f,$06,$16,$26,$0f,$09,$19,$29&lt;/p&gt;
+
+&lt;p&gt;or just include binary data as a plain text:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;Palette:&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$28&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$06&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$09&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$29&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;;background&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$28&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$30&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$21&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$31&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$06&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$26&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$0f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$09&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$19&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;$29&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;;sprites&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This numbers correspond to color from internal NES’ palette: &lt;sup id=&quot;fnref:27e518f9&quot;&gt;&lt;a href=&quot;#fn:27e518f9&quot; class=&quot;footnote&quot;&gt;6&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/Savtool-swatches.png&quot; alt=&quot;NES palette&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;1 set of 4 palettes for background and 1 set for sprites.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;In nesST you can click “Palettes” -&amp;gt; “Put to the clipboard” -&amp;gt; “ASM data” to copy a palette. Don’t forget, that only copies one palette set (16 colors) at a time.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Load palettes&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;LoadPalettes:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_STATUS&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; read PPU status to reset the #HIGH/#LOW latch&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$3F&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_ADDR&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; write the #HIGH byte of $3F00 address&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_ADDR&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; write the #LOW byte of $3F00 address&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; start out at 0&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;LoadPalettesLoop:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Palette&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; load data from address (palette + the value in x)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_DATA&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;; write to PPU&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;                   &lt;span class=&quot;c1&quot;&gt;; x += 1&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;cpx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$20&lt;/span&gt;              &lt;span class=&quot;c1&quot;&gt;; Compare X to hex $20, decimal 32 (background + sprites palletes (4*4) * 2)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bne&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LoadPalettesLoop&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; Branch to LoadPalettes loop if compare was Not Equal to zero&lt;/span&gt;
+                        &lt;span class=&quot;c1&quot;&gt;; if compare was equal to 32, keep going down&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we just copying our palette’s data to $3f00.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Remember how we set up location to store palette data earlier? Yes, it was $3f00&lt;/p&gt;
+
+&lt;h2 id=&quot;sprites&quot;&gt;Sprites&lt;/h2&gt;
+
+&lt;p&gt;This is the first page (left side) of my chr rom:&lt;br /&gt;
+&lt;img src=&quot;/assets/images/pongTileset1.bmp&quot; alt=&quot;128x128 tileset&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Loading sprites&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_ADDR&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; set the #LOW byte (00) of the RAM address&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$02&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_DMA&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;; set the #HIGH byte (02) of the RAM address, start the transfer&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Writing &lt;code class=&quot;highlighter-rouge&quot;&gt;$0200&lt;/code&gt; to OAM RAM address.&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$0200&lt;/code&gt;-&lt;code class=&quot;highlighter-rouge&quot;&gt;$02FF&lt;/code&gt; now will contain copy of OAM (64 entries).&lt;/p&gt;
+
+&lt;p&gt;This macro will simplify sprite loading routine:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;graphics.asm&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; \1 sprites W/ offsets \2 offset \3 sprites count&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;LoadSprites&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;macro&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;LoadSpritesLoop&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\@&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;\1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_RAM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;cpx&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;\3&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bne&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LoadSpritesLoop&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\@&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;\@&lt;/code&gt; - Special parameter that returns a different number for each macro. &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;\1-\3&lt;/code&gt; - input parameters.&lt;/p&gt;
+
+&lt;p&gt;In C it would’ve looked something like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;LoadSprites&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;byte&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sprites&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;byte&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;offset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;byte&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;spritesCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So, we are loading our metasprite data (&lt;code class=&quot;highlighter-rouge&quot;&gt;sprites&lt;/code&gt;) into OAM_RAM with &lt;code class=&quot;highlighter-rouge&quot;&gt;offset&lt;/code&gt;
+while X not equal to length of metasprite (&lt;code class=&quot;highlighter-rouge&quot;&gt;sprites count&lt;/code&gt;)&lt;/p&gt;
+
+&lt;p&gt;Calling this macro:&lt;/p&gt;
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nf&quot;&gt;LoadSprites&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MiddlePadle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$10&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--warning&quot;&gt;By the way, only now I noticed that I call paddle’s metasprite - “MiddlePadle”. Don’t pay much attention, I wanted to make 3 differently sized paddles, as power-ups, so…
+&lt;br /&gt;Maybe we’ll do&lt;/p&gt;
+
+&lt;p&gt;Here is what MiddlePaddle metasprite looks like:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;MiddlePadle:&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;$03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;$04&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$04&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$02&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Just a reminder. &lt;br /&gt;
+To indicate numeral system, you can prefix number with:&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt; - binary&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$&lt;/code&gt; - hex&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;no prefix&lt;/code&gt; - decimal.&lt;/p&gt;
+
+&lt;p&gt;Let’s examine first row:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;c1&quot;&gt;;vert sprite attr horiz&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;First byte is &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; screen coordinate.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Second byte - sprite index. In our .chr file $03 corresponds to this sprite.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/paddle1.PNG&quot; alt=&quot;paddle_graphics&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Third byte is attributes &lt;sup id=&quot;fnref:8f138dca&quot;&gt;&lt;a href=&quot;#fn:8f138dca&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/attributeBits.PNG&quot; alt=&quot;attribute bits&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Two least significant bits are palette number. 00 - first palette set, 01 - second, 10 - third, 11 - fourth. So, 0-3 in binary. Pretty straightforward.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fourth byte is &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; screen coordinate.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;In our case both &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; screen coordinates not absolute, but relative. So, &lt;code class=&quot;highlighter-rouge&quot;&gt;0&lt;/code&gt; is not an &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; position, but an offset of &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; coordinate. &lt;strong&gt;We offset each sprite by &lt;code class=&quot;highlighter-rouge&quot;&gt;8&lt;/code&gt; (decimal), on account of using 8x8 pixels sprites.&lt;/strong&gt;&lt;sup id=&quot;fnref:dd593263&quot;&gt;&lt;a href=&quot;#fn:dd593263&quot; class=&quot;footnote&quot;&gt;8&lt;/a&gt;&lt;/sup&gt;
+Since we have 2 paddles (right and left), it’s a good idea to use offsets, so we can re-use same metasprite information for both paddles.&lt;/p&gt;
+
+&lt;p&gt;Initialize variables. &lt;code class=&quot;highlighter-rouge&quot;&gt;$80&lt;/code&gt; - is a middle of the screen.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$80&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;paddle1PosHi&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;paddle1PosLo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, all it’s left is wait for NMI interrupt.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;endless&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jmp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;endless&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; endless loop&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;nmi&quot;&gt;&lt;strong&gt;NMI&lt;/strong&gt;&lt;/h1&gt;
+
+&lt;h2 id=&quot;ppu-clean-up&quot;&gt;PPU clean up&lt;/h2&gt;
+
+&lt;p&gt;Next step - prepare PPU to render next frame.
+And there is OAM decay, so you should update OAM content each frame. &lt;sup id=&quot;fnref:8f138dca:1&quot;&gt;&lt;a href=&quot;#fn:8f138dca&quot; class=&quot;footnote&quot;&gt;7&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Plus, at this point we can enable sprites by writing 1 in 4th most significant bit to PPU_MASK.&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_ADDR&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;; set the #LOW byte (00) of the RAM address&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$02&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_DMA&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;; set the #HIGH byte (02) of the RAM address, start the transfer&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;;;This is the PPU clean up section, so rendering the next frame starts properly.&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mb&quot;&gt;#%10000000&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; enable NMI&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_CTRL&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mb&quot;&gt;#%00010000&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;; enable sprites&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;PPU_MASK&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;;;tell the ppu there is no background scrolling&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$2005&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$2005&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;position-update&quot;&gt;Position update&lt;/h2&gt;
+
+&lt;p&gt;Now we only need to update paddle’s position and tell PPU to draw it on screen in this new position.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;Although we are not changing paddle’s position now, this function will be helpful later&lt;/p&gt;
+
+&lt;p&gt;This next macro just adds current position of a paddle and offset to form a paddle’s metasprite.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;transform.asm&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;;; \1 posYHi \2 posXHi \3 offset&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;UpdatePos&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;macro&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldx&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$03&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;ldy&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+  &lt;span class=&quot;nf&quot;&gt;UpdatePosLoop&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\@&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;\1&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;clc&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;adc&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;MiddlePadle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; add high byte of current y position to y offset (first byte of paddle's OAM ROM)&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_RAM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; store it in OAM RAM with offset&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;lda&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;\2&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; x position is constant for paddle&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;sta&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;OAM_RAM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;x&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;inx&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;iny&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;iny&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;iny&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;iny&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;cpy&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$10&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; you can live it as constant or make it fourth argument&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;bne&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;UpdatePosLoop&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;\@&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endm&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And we call it like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nf&quot;&gt;UpdatePos&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;paddle1PosHi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$0C&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;#$00&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You probably noticed 4 &lt;code class=&quot;highlighter-rouge&quot;&gt;inx&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;iny&lt;/code&gt; instructions in a row and thought it looks stupid. Yeah, well, it does, but it’s not really that stupid if you think about it.
+You could’ve wrote like this instead:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+  &lt;span class=&quot;k&quot;&gt;txa&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; 2 cycles&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;clc&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; 2 cycles&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;adc&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; 2 cycles&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;tax&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;; 2 cycles&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So, 4 instructions, 8 cycles. Same as just calling &lt;code class=&quot;highlighter-rouge&quot;&gt;inx&lt;/code&gt; 4 times. See? It’s not stupid, it’s maybe lazy, but quite efficient.&lt;/p&gt;
+
+&lt;h2 id=&quot;metasprite&quot;&gt;Metasprite&lt;/h2&gt;
+
+&lt;p&gt;Let’s look at our middle paddle’s OAM ROM again:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nf&quot;&gt;MiddlePadle:&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;$03&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;mh&quot;&gt;$04&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;16&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$04&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$02&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$00&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Each sprite only 8x8 pixels. Mario, for example, is a &lt;strong&gt;&lt;em&gt;bit&lt;/em&gt;&lt;/strong&gt; bigger, than that. Especially, well, big Mario.
+To form a big Mario’s metasprite you need to combine a few sprites.&lt;br /&gt;
+Look at this Gif:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/marioMetasprite.gif&quot; alt=&quot;Mario's metasprite&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And same with our paddle. Pay close attention to &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; offsets, sprite index and attributes.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/pongMetasprite.gif&quot; alt=&quot;paddle's metasprite&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And don’t forget to put return from interrupt (&lt;code class=&quot;highlighter-rouge&quot;&gt;RTI&lt;/code&gt;) opcode at the end.&lt;/p&gt;
+
+&lt;p class=&quot;notice--warning&quot;&gt;&lt;a href=&quot;https://8bitworkshop.com/&quot;&gt;8bitworkshop&lt;/a&gt; uses SAVE_REGS and RESTORE_REGS at the start and the end of NMI respectively. I don’t really know why it’s necessary.
+This macros pushing registers to stack (SAVE) and pulling registers from stack (RESTORE). You can find macros’ code in &lt;code class=&quot;highlighter-rouge&quot;&gt;nesdefs.asm&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;memory-mapping&quot;&gt;Memory mapping&lt;/h1&gt;
+
+&lt;p&gt;Couple of words about memory mapping and how we handle it right now.&lt;/p&gt;
+
+&lt;p&gt;In iNES header we declared 1 prg rom (2 banks, each 8 kb, 16kb in total) and 1 chr rom (1 bank, 8 kb in total).
+You probably already noticed, every bank exactly 8 kb in size.&lt;/p&gt;
+
+&lt;p&gt;PRG can be accessed through CPU memory addresses &lt;code class=&quot;highlighter-rouge&quot;&gt;$8000 - $FFF9&lt;/code&gt;.
+Look at this image by &lt;strong&gt;BunnyBoy&lt;/strong&gt;:
+&lt;img src=&quot;/assets/images/cpumemmap.png&quot; alt=&quot;cpu memory map&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;So, we put our PRG rom data in the first half of 32 kb reserved for cartridge rom - first bank in &lt;code class=&quot;highlighter-rouge&quot;&gt;$8000&lt;/code&gt;, second in &lt;code class=&quot;highlighter-rouge&quot;&gt;$A000&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p class=&quot;notice--info&quot;&gt;You should use a mapper, if you need more than 32kb of PRG&lt;/p&gt;
+
+&lt;p&gt;CHR rom connected to PPU and copy of chr rom stored in memory addresses &lt;code class=&quot;highlighter-rouge&quot;&gt;$0000-$2000&lt;/code&gt;.
+&lt;br /&gt;And you guessed it - it’s bank 3.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In first bank we store all &lt;code class=&quot;highlighter-rouge&quot;&gt;Reset&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;NMI&lt;/code&gt; code&lt;/li&gt;
+  &lt;li&gt;In second bank - palette data and pattern tables (our MiddlePaddle OAM ROM data)&lt;/li&gt;
+  &lt;li&gt;In third - our pong.chr&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In code it looks something like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-nesasm highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;bank&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;org&lt;/span&gt; &lt;span class=&quot;mh&quot;&gt;$8000&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;;first 8 kb of prg&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;Reset:&lt;/span&gt;
+  &lt;span class=&quot;nf&quot;&gt;NES_INIT&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; set up stack pointer, turn off PPU&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; wait for VSYNC&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ClearRAM&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; clear RAM&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;jsr&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;WaitSync&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;; wait for VSYNC (and PPU warmup)&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Don’t think about it too hard for now. We’re gonna explore memory mapping and, well, mappers later. Probably. Maybe.&lt;/p&gt;
+
+&lt;h1 id=&quot;result&quot;&gt;Result&lt;/h1&gt;
+
+&lt;p&gt;And after all your blood, toil, tears and sweat, if the Moon is in right state and you well-behaved all year, you’ll see&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Drumroll, please&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/pong-1.png&quot; alt=&quot;hey, it's pong&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A lot of work to display 32x8 pixels metasprite on empty 256x224 pixels screen. But I don’t know about you, for me it’s still satisfying as hell.&lt;/p&gt;
+
+&lt;h1 id=&quot;links&quot;&gt;Links&lt;/h1&gt;
+
+&lt;p&gt;You can find a source code here: &lt;a href=&quot;https://github.com/ShyDev/PongForNES&quot;&gt;github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Some related links:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Thanks to &lt;a href=&quot;https://twitter.com/cppchriscpp&quot;&gt;@cppchriscpp&lt;/a&gt; we now have a mirror of great tutorial series &lt;a href=&quot;http://nerdy-nights.nes.science/&quot;&gt;Nerdy Nights&lt;/a&gt;. Highly recommended.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://8bitworkshop.com/&quot;&gt;8bitworkshop&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Great video series about 6502 by &lt;a href=&quot;https://www.youtube.com/watch?v=LnzuMJLZRdU&quot;&gt;Ben Eater&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Tons of useful information about 6502 &lt;a href=&quot;http://6502.org/&quot;&gt;6502.org&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Tons of useful information about NES &lt;a href=&quot;http://nesdev.com/&quot;&gt;nesdev&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:9e2cc8af&quot;&gt;
+      &lt;p&gt;I mean, famicom already 36 years old. Holy shit &lt;a href=&quot;#fnref:9e2cc8af&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:f6d4ec76&quot;&gt;
+      &lt;p&gt;Just kidding, chill &lt;a href=&quot;#fnref:f6d4ec76&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:f7f95d4a&quot;&gt;
+      &lt;p&gt;By the way, great online IDE for 6502 assembler/cc65 with emulators of many 8 bit systems, contains some useful tools, syntax highlighting, etc. If you’re OK with online IDE’s, definitely check it out. &lt;a href=&quot;#fnref:f7f95d4a&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:b82c9141&quot;&gt;
+      &lt;p&gt;I only ported some code, that I’m gonna use in this game. So, it’s not a full port. &lt;a href=&quot;#fnref:b82c9141&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:6157e0dc&quot;&gt;
+      &lt;p&gt;PPU or Picture Processing Unit - rtx2080 in the 8 bit world. More like adreno to be exact, since it’s a video chip and not a video card &lt;a href=&quot;#fnref:6157e0dc&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:27e518f9&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://wiki.nesdev.com/w/index.php/PPU_palettes&quot;&gt;PPU palettes (nesdev’s wiki)&lt;/a&gt; &lt;a href=&quot;#fnref:27e518f9&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:8f138dca&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://wiki.nesdev.com/w/index.php/PPU_OAM&quot;&gt;PPU OAM (nesdev’s wiki)&lt;/a&gt; &lt;a href=&quot;#fnref:8f138dca&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt; &lt;a href=&quot;#fnref:8f138dca:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;sup&gt;2&lt;/sup&gt;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:dd593263&quot;&gt;
+      &lt;p&gt;By 8, don’t screw up like I did. If you offset &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; and/or &lt;code class=&quot;highlighter-rouge&quot;&gt;y&lt;/code&gt; only by 1, you’ll have a lot of problems, including problems with sprite priority. I know it’s sound obvious, but I managed to overlook it at first &lt;a href=&quot;#fnref:dd593263&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</content><author><name>Yury Sinev</name><email>flawed.blog@gmail.com</email></author><category term="NES" /><category term="6502" /><summary type="html">Making Pong for Nintendo Entertainment System (NES). Week 1. Drawing some sprites</summary></entry></feed>
