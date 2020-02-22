@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
+<loc>https://flawed.blog/portfolio/alienWest/</loc>
+<lastmod>2020-02-22T22:35:03+04:00</lastmod>
+</url>
+<url>
+<loc>https://flawed.blog/portfolio/lastBreath/</loc>
+<lastmod>2020-02-22T22:35:03+04:00</lastmod>
+</url>
+<url>
 <loc>https://flawed.blog/portfolio/pilamSky/</loc>
-<lastmod>2020-01-08T23:55:10+04:00</lastmod>
+<lastmod>2020-02-22T22:35:03+04:00</lastmod>
 </url>
 <url>
 <loc>https://flawed.blog/gamedev/homebrew-pong-for-nes-week-1</loc>
