@@ -20,7 +20,7 @@ var store = [{
         "url": "http://localhost:4000/portfolio/pllTopShelf/",
         "teaser":"http://localhost:4000/assets/images/PllTopShelf/pllWideIcon.jpg"},{
         "title": "Tubular (WIP title)",
-        "excerpt":"Platforms:      Release date: Unreleased, TBA   Swipe and carve your way through numerous obstacles with a powerful laser. How far can you go in one sitting? Share your high scores with friends.                     ","categories": [],
+        "excerpt":"Platforms:      Release date: Unreleased, TBA   Swipe and carve your way through numerous obstacles with a powerful laser. How far can you go in one sitting? Share your high scores with friends.                     privacy policy   ","categories": [],
         "tags": [],
         "url": "http://localhost:4000/portfolio/tubular/",
         "teaser":"http://localhost:4000/assets/images/tubularWideTempIcon.png"},{
